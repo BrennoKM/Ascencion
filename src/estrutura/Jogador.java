@@ -13,7 +13,9 @@ public class Jogador {
 	private List<Carta> monteDescartadas;
 	private Baralho baralhoDeClasse;
 	private Baralho baralhoDeVida;
-	
+	public Jogador() {
+		
+	}
 
 	public Jogador(String nome, Naipe naipeClasse, Naipe naipeVida) {
 	    this.nome = nome;
@@ -38,7 +40,7 @@ public class Jogador {
 	            return null;
 	    }
 	}
-
+/*
 	public void pegarCarta() {
 	    Carta carta = baralhoDeClasse.distribuirCarta();
 	    if (carta == null) { // se o baralho de classe acabar
@@ -50,12 +52,13 @@ public class Jogador {
 	    }
 	    cartas.add(carta);
 	}
-
+/*
+	/*
 	public void devolverCartas(List<Carta> cartasDescartadas) {
 	    baralhoDeClasse.adicionarCartas(cartasDescartadas); // adiciona as cartas descartadas ao baralho de classe
 	    baralhoDeClasse.embaralhar(); // embaralha o baralho de classe
 	    monteDescartadas.clear(); // limpa a lista de cartas descartadas
-	}
+	}*/
 
 	public void descartarCarta(int index) {
 		Carta carta = cartas.remove(index);
@@ -107,5 +110,11 @@ public class Jogador {
 
 	public void setBaralhoDeClasse(Baralho baralhoDeClasse) {
 		this.baralhoDeClasse = baralhoDeClasse;
+	}
+	
+	@Override
+	public String toString() {
+		return "Informações do Jogador:\n\nNome = " + nome + "\nCartas = " + cartas + "\nMonteDescartadas = " + monteDescartadas
+				+ "\nBaralhoDeClasse=" + baralhoDeClasse.mostrar() + "\nBaralhoDeVida=" + baralhoDeVida + "\n";
 	}
 }

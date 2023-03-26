@@ -9,15 +9,27 @@ import estrutura.Enums.Valor;
 
 public class Baralho {
 
-    private List<Carta> cartas;
+   // private List<Carta> cartas;
+	private ArrayList<Carta> cartas;
+	
+	
 
-    public Baralho() {
+    public ArrayList<Carta> getCartas() {
+		return cartas;
+	}
+
+	public void setCartas(ArrayList<Carta> cartas) {
+		this.cartas = cartas;
+	}
+
+	public Baralho() {
         this.cartas = new ArrayList<>();
+        /*
         for (Naipe naipe : Naipe.values()) {
             for (Valor valor : Valor.values()) {
                 this.cartas.add(new Carta(naipe, valor));
             }
-        }
+        }*/
     }
     
     public Baralho(Naipe naipe) {
@@ -33,14 +45,16 @@ public class Baralho {
     }
 
     public void adicionarCarta(Carta carta) {
-        this.cartas.add(carta);
+       // this.cartas.add(carta);
+    	cartas.add(carta);
     }
     
+    /*
     public void adicionarCartas(List<Carta> cartas) {
         for (Carta carta : cartas) {
             adicionarCarta(carta);
         }
-    }
+    }*/
 
     public void embaralhar() {
         Collections.shuffle(this.cartas);
@@ -53,6 +67,26 @@ public class Baralho {
         return null;
     }
 
+    // limpar cartas:
+    public void limpar() {
+    	cartas.clear();
+    }
     
+    public String mostrar() {
+    	String str = "";
+    	for (Carta c: cartas)
+    		str += c.toString() + "\n";
+    	return str;
+    }
+    
+    public boolean darCarta(Carta carta, Baralho outroBaralho) {
+    	if(!cartas.contains(carta)) {
+    		return false;
+    	}else {
+    		cartas.remove(carta);
+    		outroBaralho.adicionarCarta(carta);
+    		return true;
+    	}
+    }
 
 }
