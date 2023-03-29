@@ -9,6 +9,13 @@ import estrutura.Enums.Valor;
 public class Game {
 	public static Scanner scanner = new Scanner(System.in);
 	public static void main(String []args) {
+		Monstro monster = new Monstro();
+		monster.adicionarCartas();
+		
+		System.out.println(monster.toString());
+		monster.pegarCartas();
+//		monster.mostrarCartasJogadas();
+		
 		Baralho baralho = new Baralho(); baralho.limpar();
 		for (int i = 0; i < 50; i++) {
 		    Carta carta = new Carta(Naipe.values()[new Random().nextInt(Naipe.values().length)], Valor.values()[new Random().nextInt(Valor.values().length)]);
