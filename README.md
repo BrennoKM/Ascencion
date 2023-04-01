@@ -7,6 +7,17 @@
 
 Este projeto da disciplina de **Estrutura de Dados I** tem como objetivo desenvolver um jogo estilo RPG de cartas de baralho **Ascension** em Java, com a finalidade de trabalhar diferentes estruturas de dados e conceitos de programação orientada a objetos. O jogo será implementado utilizando a biblioteca JavaFX para criar uma interface gráfica do usuário (GUI) interativa, e diferentes estruturas de dados serão utilizadas para gerenciar o baralho.
 
+## ✅ Checklist
+
+- [ ] Vetor/Matriz
+- [ ] Arquivo texto/binário
+- [ ] Generic
+- [ ] Pilha
+- [ ] Fila
+- [ ] Lista encadeada
+- [ ] Busca linear/binária
+- [ ] Ordenação
+
 ## 👨🏾‍💻 Participantes
 - Brenno Kevyn Maia de Souza
 - Davi Rabelo Clemente
