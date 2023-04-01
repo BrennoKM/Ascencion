@@ -11,9 +11,9 @@ Este projeto da disciplina de **Estrutura de Dados I** tem como objetivo desenvo
 
 - [ ] Vetor/Matriz
 - [ ] Arquivo texto/binário
-- [ ] Generic
-- [ ] Pilha
-- [ ] Fila
+- [X] Generic
+- [X] Pilha
+- [X] Fila
 - [ ] Lista encadeada
 - [ ] Busca linear/binária
 - [ ] Ordenação

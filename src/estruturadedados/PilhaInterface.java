@@ -11,6 +11,4 @@ public interface PilhaInterface <T> {
    
     // O show não faz parte de um metodo basico de pilha (LEMBRAR)
     void show();	// opcional e auxiliar
-    
-    
 }
