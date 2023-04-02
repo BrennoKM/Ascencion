@@ -34,19 +34,11 @@ public class Monstro {
 	public void pegarCartas() {
 	    baralhoJogado = new Baralho();
 	    baralhoJogado.limpar();
-	    Stack<Carta> cartasRetiradas = new Stack<>();
 
 	    // Retira as 4 últimas cartas da pilha de cartas do monstro
 	    for (int i = 0; i < 4; i++) {
-	        if (!cartas.isEmpty()) {
-	            cartasRetiradas.push(cartas.pop());
+	            baralhoJogado.adicionarCarta(cartas.pop());
 	        }
-	    }
-
-	    // Adiciona as cartas retiradas no baralho jogado
-	    while (!cartasRetiradas.isEmpty()) {
-	        baralhoJogado.adicionarCarta(cartasRetiradas.pop());
-	    }
 	}
 	
 	public void mostrarCartasJogadas() {

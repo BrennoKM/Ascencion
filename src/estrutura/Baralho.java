@@ -2,17 +2,14 @@ package estrutura;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import estrutura.Enums.Naipe;
 import estrutura.Enums.Valor;
 
 public class Baralho {
 
-   // private List<Carta> cartas;
+   //private List<Carta> cartas;
 	private ArrayList<Carta> cartas;
-	
-	
 
     public ArrayList<Carta> getCartas() {
 		return cartas;
