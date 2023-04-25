@@ -1,10 +1,10 @@
-package estrutura;
+package Model.Entity;
 
 import java.util.Random;
 import java.util.Stack;
 
-import estrutura.Enums.Naipe;
-import estrutura.Enums.Valor;
+import Model.Entity.Enums.Naipe;
+import Model.Entity.Enums.Valor;
 
 public class Monstro {
 	private Baralho baralho;
