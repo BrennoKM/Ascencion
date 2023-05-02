@@ -44,7 +44,7 @@ public class Carta {
     public String toString() {
     	String texto = "";
     	if(faceVirada)
-    		texto += "Heroi " + naipe.getNaipe() + " valor " + valor.getValorString();
+    		texto += naipe.getNaipe() + " valor " + valor.getValorString();
     	else
     		texto += "Não há carta selecionada";
     	return texto;

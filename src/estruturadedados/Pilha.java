@@ -83,11 +83,9 @@ public class Pilha <T> implements PilhaInterface <T> {
 	public void show()
 	{
 	    int i;
-
-		System.out.println("\nExibindo...\n");
 		
 	    for(i=0; i <= top; i++) {
-	        System.out.println("posicao " + i + " = " + array[i] + "\n");
+	        System.out.println(array[i]);
 	    }
 		System.out.println("topo index = " + top + "\n");
 	}
