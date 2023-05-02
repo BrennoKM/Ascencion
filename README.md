@@ -1,6 +1,6 @@
 <h1 align="center">
 <img src="https://cdn-icons-png.flaticon.com/512/4099/4099307.png" width="200px">
-<p>Ascension ♠♣♥♦⚔</p>
+<p>Ascension ♣♥♠♦⚔</p>
 </h1>
 
 ## 🏆 Objetivo
@@ -10,7 +10,7 @@ Este projeto da disciplina de **Estrutura de Dados I** tem como objetivo desenvo
 ## ✅ Checklist
 
 - [ ] Vetor/Matriz
-- [ ] Arquivo texto/binário
+- [X] Arquivo texto/binário
 - [X] Generic
 - [X] Pilha
 - [X] Fila
