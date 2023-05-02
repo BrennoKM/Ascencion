@@ -1,5 +1,6 @@
 package Model.Entity;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,7 +11,17 @@ public class Game {
 	public static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String []args) {
-		
+		Usuario usuario = new Usuario();
+		 String caminhoDoArquivo = "C:\\Users\\Usuário\\Documents\\GitHub\\Ascencion\\src\\Database\\usuarios.txt";
+		    Usuario[] usuarios;
+		    try {
+		        usuarios = usuario.lerUsuariosDoArquivo(caminhoDoArquivo);
+		        // fazer alguma coisa com o array de usuários
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		    
+		/*
 		Baralho baralho = new Baralho(); baralho.limpar(); //Criação de um baralho aleatorio
 		for (int i = 0; i < 50; i++) {
 		    Carta carta = new Carta(Naipe.values()[new Random().nextInt(Naipe.values().length)], Valor.values()[new Random().nextInt(Valor.values().length)]);
@@ -85,7 +96,9 @@ public class Game {
 			}
 			jogador.setBaralhoDeClasse(baralhoJogador);
 			System.out.print(jogador.toString());
-	       
+	      */
+		
+		
 	
 	}
 }
