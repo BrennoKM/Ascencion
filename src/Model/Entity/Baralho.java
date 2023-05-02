@@ -54,7 +54,7 @@ public class Baralho {
     }*/
 
     public void embaralhar() {
-        Collections.shuffle(this.cartas);
+    	Collections.shuffle(this.cartas);
     }
 
     public Carta distribuirCarta() {

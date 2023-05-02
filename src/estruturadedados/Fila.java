@@ -110,12 +110,12 @@ public class Fila<T> implements FilaInterface<T> {
 	    	    
 	    while(i != last)
 	    {
-	    	System.out.println("posicao " + i + " = " + array[i] + "\n");
+	    	System.out.println(array[i]);
 
 	        i = (i + 1) % sizeMax;
 	    }
-	    System.out.println("posicao " + i + " = " + array[i] + "\n");
+	    System.out.println(array[i]);
 	    
-		System.out.println("inicio = " + first + "  fim = " + last + "\n");
+		System.out.println("\nCartas na mesa: " + (last+1));
 	}
 }

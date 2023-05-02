@@ -103,9 +103,12 @@ public class Game {
 		Monstro monster = new Monstro();
 		monster.adicionarCartas();
 		monster.embaralhar();
+		div();
 		System.out.println(monster.toString());
 		monster.pegarCartas();
+		div();
 		monster.mostrarCartasJogadas();
+		div();
 		   
 		Baralho baralho = new Baralho();
 		
@@ -122,7 +125,7 @@ public class Game {
 		    baralho.adicionarCarta(carta);
 		} */
 		
-		 System.out.print("BEM-VINDO AO GAME ASCENSION\n\n");
+		 System.out.println("\nBEM-VINDO AO GAME ASCENSION\n");
 		 Jogador jogador = new Jogador(); // Jogador criado
 		 String heroi ="", heroi2 ="";
 			System.out.print("Digite o nome do seu jogador:");
@@ -192,4 +195,9 @@ public class Game {
 			System.out.print(jogador.toString());
 		
 	}
+	
+	public static void div() {
+		System.out.println("-----------------------------------------------------------------");
+	}
+	
 }
