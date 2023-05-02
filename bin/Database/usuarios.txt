@@ -1,0 +1,3 @@
+Usuario [id_usuario=1, login=joao, senha=1234, vencidas=5, heroifavorito=Guerreiros, baralhoDeClasses=[], baralhoDeVidas=[], cartasSelecionadas=[], cartasDescartadas=[]]
+
+Usuario [id_usuario=2, login=maria, senha=5678, vencidas=8, heroifavorito=Assassinos, baralhoDeClasses=[], baralhoDeVidas=[], cartasSelecionadas=[], cartasDescartadas=[]]
