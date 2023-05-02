@@ -10,7 +10,7 @@ public class Baralho {
 
    //private List<Carta> cartas;
 	private ArrayList<Carta> cartas;
-
+	
     public ArrayList<Carta> getCartas() {
 		return cartas;
 	}

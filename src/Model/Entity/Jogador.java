@@ -13,6 +13,7 @@ public class Jogador {
 	private List<Carta> monteDescartadas;
 	private Baralho baralhoDeClasse;
 	private Baralho baralhoDeVida;
+	
 	public Jogador() {
 		
 	}
@@ -129,6 +130,6 @@ public class Jogador {
 		return "Informações do Jogador:\n"
 				+ "--------------------------------------------------------------"
 				+ "\nNome = " + nome + "\nCartas = " + cartas + "\nMonteDescartadas = " + monteDescartadas
-				+ "\nBaralhoDeClasse=" + baralhoDeClasse.mostrar() + "\nBaralhoDeVida=" + baralhoDeVida + "\n";
+				+ "\nBaralhoDeClasse:\n" + baralhoDeClasse.mostrar() + "\nBaralhoDeVida=" + baralhoDeVida + "\n";
 	}
 }
