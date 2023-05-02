@@ -20,14 +20,14 @@ public class Monstro {
 	
 	public void adicionarCartas() {
 		baralho = new Baralho();
-		baralho.limpar();
-		for (int i = 0; i < 50; i++) {
-		Valor valor;
-		do {
-		valor = Valor.values()[new Random().nextInt(Valor.values().length)]; // qualquer valor, exceto "Ás"
-		} while (valor == Valor.AS);
-		Carta carta = new Carta(Naipe.values()[new Random().nextInt(Naipe.values().length)], valor);
-		baralho.adicionarCarta(carta);
+		// tiramos a parte que limpa o baralho e mudamos o valor máximo do i
+		for(int i = 0; i < 52; i++) {
+			Carta carta = baralho.distribuirCarta();
+			if (carta.getValorEnum() != Valor.AS) {
+			    // A carta tem valor "AS", faça algo aqui
+				baralho.adicionarCarta(carta);
+			}
+			
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class Monstro {
 
 	    // Retira as 4 últimas cartas da pilha de cartas do monstro
 	    for (int i = 0; i < 4; i++) {
-	            baralhoJogado.adicionarCarta(cartas.pop());
+	            //baralhoJogado.adicionarCarta(cartas.pop());
 	        }
 	}
 	
@@ -64,6 +64,11 @@ public class Monstro {
 
 	public void setBaralho(Baralho baralho) {
 		this.baralho = baralho;
+	}
+
+	public void embaralhar() {
+		baralho.embaralhar();
+		
 	}
 	
 }

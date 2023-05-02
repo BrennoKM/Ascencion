@@ -7,16 +7,17 @@ import Model.Entity.Enums.Naipe;
 import Model.Entity.Enums.Valor;
 
 public class Game {
+	
 	public static Scanner scanner = new Scanner(System.in);
+	
 	public static void main(String []args) {
 		Monstro monster = new Monstro();
 		monster.adicionarCartas();
+		monster.embaralhar();
 		System.out.println(monster.toString());
 		monster.pegarCartas();
-//		monster.mostrarCartasJogadas();
+		monster.mostrarCartasJogadas();
 		
-		
-		/*
 		Baralho baralho = new Baralho(); baralho.limpar();
 		for (int i = 0; i < 50; i++) {
 		    Carta carta = new Carta(Naipe.values()[new Random().nextInt(Naipe.values().length)], Valor.values()[new Random().nextInt(Valor.values().length)]);
@@ -73,7 +74,7 @@ public class Game {
 			System.out.println("Opção invalida");
 		}
 		
-		System.out.print("Herois escolhidos: " + heroi + " e " + heroi2);
+		System.out.println("Herois escolhidos: " + heroi + " e " + heroi2);
 		Baralho baralhoJogador = new Baralho();
 		baralhoJogador.limpar();
 		
@@ -86,7 +87,9 @@ public class Game {
 		    if (carta.getNaipe().equals(heroi2)) 
 		    	baralhoJogador.adicionarCarta(carta);
 		}
+		
 		jogador.setBaralhoDeClasse(baralhoJogador);
-		System.out.print(jogador.toString());
-	*/}
+		System.out.println(jogador.toString());
+		
+	}
 }
