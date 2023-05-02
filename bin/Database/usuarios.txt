@@ -52,3 +52,11 @@ heroifavorito=
 
 
 
+id_usuario=8
+login=mariajoaquina
+senha=mariajoaquina1234
+vencidas=0
+heroifavorito=
+
+
+

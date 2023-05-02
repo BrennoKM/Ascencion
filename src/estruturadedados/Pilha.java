@@ -12,6 +12,9 @@ public class Pilha <T> implements PilhaInterface <T> {
 		this.array = new Object[sizeMax];
 	}
 
+	public Pilha() {
+		
+	}
 	
 	public void push(T valor) throws Excessao	
 	{

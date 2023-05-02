@@ -21,12 +21,12 @@ public class Baralho {
 
 	public Baralho() {
         this.cartas = new ArrayList<>();
-        /*
+        
         for (Naipe naipe : Naipe.values()) {
             for (Valor valor : Valor.values()) {
                 this.cartas.add(new Carta(naipe, valor));
             }
-        }*/
+        }
     }
     
     public Baralho(Naipe naipe) {
@@ -63,6 +63,12 @@ public class Baralho {
         }
         return null;
     }
+    
+    public void removerCarta(Carta removida) {
+    	if (removida != null) {
+    		cartas.remove(removida);
+    	}
+    }
 
     // limpar cartas:
     public void limpar() {
@@ -71,6 +77,7 @@ public class Baralho {
     
     public String mostrar() {
     	String str = "";
+    	int i = 0;
     	for (Carta c: cartas)
     		str += c.toString() + "\n";
     	return str;

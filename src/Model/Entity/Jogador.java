@@ -126,7 +126,9 @@ public class Jogador {
 	
 	@Override
 	public String toString() {
-		return "Informações do Jogador:\n\nNome = " + nome + "\nCartas = " + cartas + "\nMonteDescartadas = " + monteDescartadas
+		return "Informações do Jogador:\n"
+				+ "--------------------------------------------------------------"
+				+ "\nNome = " + nome + "\nCartas = " + cartas + "\nMonteDescartadas = " + monteDescartadas
 				+ "\nBaralhoDeClasse=" + baralhoDeClasse.mostrar() + "\nBaralhoDeVida=" + baralhoDeVida + "\n";
 	}
 }

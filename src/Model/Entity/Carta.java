@@ -24,16 +24,16 @@ public class Carta {
     	return valor.getValor();
     }
 
-    /*
+    
     // Método para acessar o naipe da carta
-    public Naipe getNaipe() {
+    public Naipe getNaipeEnum() {
         return naipe;
     }
 
     // Método para acessar o valor da carta
-    public Valor getValor() {
+    public Valor getValorEnum() {
         return valor;
-    }*/
+    }
 
     /*
     // Método que retorna uma string formatada com o valor e naipe da carta
