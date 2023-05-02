@@ -2,6 +2,8 @@ package Model.Service;
 
 import Model.Entity.Usuario;
 
+import java.util.Scanner;
+
 public class UsuarioService {
 	public static void exibirPainelDeUsuario(Usuario usuario) {
         System.out.println("\n===================\n");
