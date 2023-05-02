@@ -7,8 +7,8 @@ import Model.Entity.Enums.Naipe;
 import Model.Entity.Enums.Valor;
 
 public class Jogador {
-
 	private String nome;
+	private String senha;
 	private List<Carta> cartas;
 	private List<Carta> monteDescartadas;
 	private Baralho baralhoDeClasse;
@@ -39,6 +39,18 @@ public class Jogador {
 	        default:
 	            return null;
 	    }
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public void setMonteDescartadas(List<Carta> monteDescartadas) {
+		this.monteDescartadas = monteDescartadas;
 	}
 /*
 	public void pegarCarta() {
