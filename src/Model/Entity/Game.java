@@ -1,7 +1,5 @@
 package Model.Entity;
 
-import java.io.IOException;
-import java.util.Random;
 import java.util.Scanner;
 
 import Model.DAO.UsuarioDAO;
@@ -11,6 +9,61 @@ import Model.Service.UsuarioService;
 
 public class Game {
 	public static Scanner scanner = new Scanner(System.in);
+	
+	public static void telaInicio(String caminho, Usuario[] usuarios) {
+	    int opcao;
+	    String nome,senha;
+
+	    do {
+	        System.out.println("================================\n");    
+	        System.out.println("SEJA BEM-VINDO AO GAME ASCENSION ");
+	        System.out.println("================================\n\n");
+	        System.out.println("Digite 1 para realizar o login\nDigite 2 para realizar o cadastro\nDigite 3 para sair da aplicação\nDigite 4 para ver usuarios cadastrados");
+	        System.out.print("Opção escolhida: ");
+	        opcao = scanner.nextInt();
+	        scanner.nextLine(); // limpa o buffer do teclado
+
+	        switch (opcao) {
+	            case 1:
+	            	 System.out.print("Digite o login: ");
+	         	    nome = scanner.next();
+	         	    System.out.print("Digite a senha: ");
+	         	    senha = scanner.next();
+	         	    Usuario jogador = UsuarioDAO.fazerLogin(caminho, nome, senha);
+
+	         	    if (jogador != null) {
+	         	        System.out.println("Login realizado com sucesso. Dados do jogador:");
+	         	        UsuarioService.exibirPainelDeUsuario(jogador);
+	         	    } else {
+	         	        System.out.println("Não foi possível fazer o login. Verifique as informações de login e senha.");
+	         	    }
+	                break;
+	            case 2:
+	            	System.out.print("Digite o nome do usuario:");
+	        		nome = scanner.next();
+	        		System.out.print("Digite a senha do usuario:");
+	        		senha = scanner.next();
+	        		UsuarioDAO.cadastrarUsuario(caminho, nome, senha);
+	                break;
+	            case 3:
+	                System.out.println("Saindo da aplicação...");
+	                break;
+	            case 4:
+	            	System.out.println("Mostrando usuarios cadastrados...");
+	            	usuarios = UsuarioDAO.lerUsuariosDoArquivo(caminho);
+	    		    for (Usuario usuario : usuarios) {
+	    		        System.out.println(usuario.getLogin() + " vencidas " + usuario.getVencidas());
+	    		    }
+	            	break;
+	            default:
+	                System.out.println("Opção inválida! Tente novamente.\n");
+	                break;
+	        }
+
+	    } while (opcao != 3);
+
+	    scanner.close();
+	}
 	
 	public static void main(String []args) {
 		
@@ -55,6 +108,11 @@ public class Game {
 		monster.mostrarCartasJogadas();
 		   
 		Baralho baralho = new Baralho();
+		
+		String caminho = "C:\\Users\\Usuário\\Documents\\GitHub\\Ascencion\\src\\Database\\usuarios.txt";
+		Usuario[] usuarios = null;
+		telaInicio(caminho, usuarios);
+		
 		
 		/*
 		baralho.limpar(); //Criação de um baralho aleatorio
