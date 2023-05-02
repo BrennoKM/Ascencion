@@ -17,7 +17,6 @@ public class Fila<T> implements FilaInterface<T> {
 	//Na prova: vetor e é pedido para adicionar e remover elementos de uma fila e uma pilha e realizar as manipulações
 	public void add(T valor) throws Excessao
 	{
-		System.out.println("\nInserir...\n");
 
 	    int lastTemp = (last + 1) % sizeMax; //vai dar zero se for igual
 
@@ -38,8 +37,6 @@ public class Fila<T> implements FilaInterface<T> {
 	@SuppressWarnings("unchecked")
 	public T remove() throws Excessao
 	{
-		System.out.println("\nRemover...\n");
-
 		T retorno;
 		
 	    if (first == -1) {
@@ -66,8 +63,6 @@ public class Fila<T> implements FilaInterface<T> {
 	@SuppressWarnings("unchecked")
 	public T peek() throws Excessao
 	{
-		System.out.println("\nConsultar elemento no inicio...\n");
-
 		T retorno;
 		
 	    if(first == -1) {
@@ -106,7 +101,6 @@ public class Fila<T> implements FilaInterface<T> {
 	
 	public void show()
 	{
-		System.out.println("\nExibindo...\n");
 		
 	    int i = first;
 	    

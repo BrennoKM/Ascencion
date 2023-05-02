@@ -13,12 +13,10 @@ public class Pilha <T> implements PilhaInterface <T> {
 	}
 
 	public Pilha() {
-		
 	}
 	
 	public void push(T valor) throws Excessao	
 	{
-		System.out.println("\nEmpilhar...\n");
 
 	    if(isFull()) {
 	        throw new Excessao("\nERRO: pilha cheia [valor="+valor+"]!!!\n" );
@@ -32,7 +30,6 @@ public class Pilha <T> implements PilhaInterface <T> {
 	@SuppressWarnings("unchecked")
 	public T pop() throws Excessao
 	{
-		System.out.println("\nDesempilhar...\n");
 
 		T retorno;
 		
@@ -50,7 +47,6 @@ public class Pilha <T> implements PilhaInterface <T> {
 	@SuppressWarnings("unchecked")
 	public T peek() throws Excessao
 	{
-		System.out.println("\nConsultar o Topo...\n");
 		
 	    if(isEmpty()) {
 	        throw new Excessao( "\nERRO: pilha vazia!!!\n" );
@@ -94,6 +90,15 @@ public class Pilha <T> implements PilhaInterface <T> {
 	        System.out.println("posicao " + i + " = " + array[i] + "\n");
 	    }
 		System.out.println("topo index = " + top + "\n");
+	}
+	
+	public int size() {
+		int count = 0;
+		for(Object obj : array) {
+			count++;
+		}
+		
+		return count;
 	}
 	
 }

@@ -5,18 +5,30 @@ import java.util.Stack;
 
 import Model.Entity.Enums.Naipe;
 import Model.Entity.Enums.Valor;
+import estruturadedados.Fila;
 import estruturadedados.Pilha;
 
 public class Monstro {
 	private Baralho baralho;
     private Pilha<Carta> cartas;
-    private Baralho baralhoJogado;
+    private Fila<Carta> baralhoJogado = new Fila<>(4);
     
-	public Monstro() {}
+	public Monstro() {
+		this.baralho = new Baralho();
+		this.cartas = new Pilha<>(52);
+		int i = 0;
+		for(Carta carta : baralho.getCartas()) {
+			cartas.push(baralho.getCartas().get(i++));
+		}
+	}
 	
 	public Monstro(Naipe naipeClasse) {
-		this.cartas = new Pilha<>();
 		this.baralho = new Baralho(naipeClasse);
+		this.cartas = new Pilha<>(52);
+		int i = 0;
+		for(Carta carta : baralho.getCartas()) {
+			cartas.push(carta);
+		}
 	}
 	
 	public void adicionarCartas() {
@@ -33,17 +45,15 @@ public class Monstro {
 	}
 	
 	public void pegarCartas() {
-	    baralhoJogado = new Baralho();
-	    baralhoJogado.limpar();
-
 	    // Retira as 4 últimas cartas da pilha de cartas do monstro
 	    for (int i = 0; i < 4; i++) {
-	            //baralhoJogado.adicionarCarta(cartas.pop());
+	    	System.out.println(cartas.peek());
+	            baralhoJogado.add(cartas.pop());
 	        }
 	}
 	
 	public void mostrarCartasJogadas() {
-	    System.out.println("\nCartas jogadas pelo monstro:\n\n" + baralhoJogado.mostrar() + "\n");
+	    System.out.println("\nCartas jogadas pelo monstro:\n" + baralhoJogado + "\n");
 	}
 	
 	@Override

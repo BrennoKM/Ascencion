@@ -15,9 +15,9 @@ public class Game {
 	    String nome,senha;
 
 	    do {
-	        System.out.println("================================\n");    
+	        System.out.println("================================");    
 	        System.out.println("SEJA BEM-VINDO AO GAME ASCENSION ");
-	        System.out.println("================================\n\n");
+	        System.out.println("================================\n");
 	        System.out.println("Digite 1 para realizar o login\nDigite 2 para realizar o cadastro\nDigite 3 para sair da aplicação\nDigite 4 para ver usuarios cadastrados");
 	        System.out.print("Opção escolhida: ");
 	        opcao = scanner.nextInt();
@@ -109,9 +109,10 @@ public class Game {
 		   
 		Baralho baralho = new Baralho();
 		
-		String caminho = "C:\\Users\\Usuário\\Documents\\GitHub\\Ascencion\\src\\Database\\usuarios.txt";
+		String caminhoJovit = "C:\\Users\\Usuário\\Documents\\GitHub\\Ascencion\\src\\Database\\usuarios.txt";
+		String caminhoRyan = "C:\\Users\\Ryan\\eclipse-workspace-projects\\Ascencion\\src\\Database\\usuarios.txt";
 		Usuario[] usuarios = null;
-		telaInicio(caminho, usuarios);
+		//telaInicio(caminhoRyan, usuarios);
 		
 		
 		/*
