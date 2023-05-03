@@ -59,7 +59,7 @@ public class Monstro {
 	
 	@Override
 	public String toString() {
-		return "\nCartas do monstro:\n\n" + baralho.mostrar() + "\n";
+		return "Cartas do monstro:\n\n" + baralho.mostrar();
 	}
 	
 	public Pilha<Carta> getCartas() {
