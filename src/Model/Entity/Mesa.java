@@ -28,7 +28,7 @@ public class Mesa {
 	public void exibirMesa() {
 		System.out.println("Jogadores:");
 		for (Jogador jogador : jogadores) {
-			System.out.println("Nome: " + jogador.getNome() + ", Cartas: " + jogador.getCartas());
+			System.out.println("Nome: " + jogador.getNome() + ", Cartas: " + jogador.getCartasMao());
 		}
 		System.out.println("Monstros em campo: " + monstrosEmCampo);
 		System.out.println("Cartas descartadas: " + monteDescartadas.size());

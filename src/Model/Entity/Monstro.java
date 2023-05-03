@@ -42,9 +42,9 @@ public class Monstro {
 	public void pegarCartas() {
 	    // Retira as 4 últimas cartas da pilha de cartas do monstro
 		
-		int i = 0;
+		int i = baralho.tamanho() - 1;
 		for(Carta carta : baralho.getCartas()) {
-			cartas.push(baralho.getCartas().get(i++));
+			cartas.push(baralho.getCartas().get(i--));
 		}
 		
 	    for (int j = 0; j < 4; j++) {

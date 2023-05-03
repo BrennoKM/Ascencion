@@ -2,9 +2,11 @@ package Model.Entity;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import Model.Entity.Enums.Naipe;
 import Model.Entity.Enums.Valor;
+import estruturadedados.Pilha;
 
 public class Baralho {
 
@@ -46,12 +48,19 @@ public class Baralho {
     	cartas.add(carta);
     }
     
-    /*
+    
     public void adicionarCartas(List<Carta> cartas) {
         for (Carta carta : cartas) {
             adicionarCarta(carta);
         }
-    }*/
+    }
+    
+    public void adicionarCartas(Pilha<Carta> cartas) {
+        for (int i = 0; i < cartas.size(); i++) {
+        	System.out.println(cartas.peek());
+            adicionarCarta(cartas.pop());
+        }
+    }
 
     public void embaralhar() {
     	Collections.shuffle(this.cartas);
