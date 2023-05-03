@@ -31,6 +31,7 @@ public class Jogador {
         while(mao.verificarCheia()){
             if(baralhoClasse.verificarVazio()){
                 baralhoClasse.setCartas(baralhoDescarte.getCartas());
+                baralhoClasse.shuffle();
                 baralhoDescarte.limparBaralho();
             }
             mao.addCarta(baralhoClasse.distribuirCarta());
