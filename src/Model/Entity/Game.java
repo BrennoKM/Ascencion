@@ -198,6 +198,8 @@ public class Game {
 			
 			
 			System.out.print(jogador.toString());
+			
+			jogador.pegarCarta(4);
 		
 	}
 	

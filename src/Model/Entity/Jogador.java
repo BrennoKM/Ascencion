@@ -5,12 +5,14 @@ import java.util.List;
 
 import Model.Entity.Enums.Naipe;
 import Model.Entity.Enums.Valor;
+import estruturadedados.Excessao;
+import estruturadedados.Pilha;
 
 public class Jogador {
 	private String nome;
 	private String senha;
 	private List<Carta> cartasMao;
-	private List<Carta> monteDescartadas;
+	private Pilha<Carta> monteDescartadas;
 	private Baralho baralhoDeClasse;
 	private Baralho baralhoDeVida;
 	
@@ -29,7 +31,7 @@ public class Jogador {
 	    	baralhoDeVida.adicionarCarta(new Carta(inverterNaipe(naipeClasse), valor));
 	    	baralhoDeVida.adicionarCarta(new Carta(inverterNaipe(naipeClasse2), valor));
         }
-	    this.monteDescartadas = new ArrayList<>(); // Lista vazia de cartas descartadas
+	    this.monteDescartadas = new Pilha<>(); // Lista vazia de cartas descartadas
 	}
 
 	private Naipe inverterNaipe(Naipe naipe) {
@@ -55,38 +57,46 @@ public class Jogador {
 		this.senha = senha;
 	}
 
-	public void setMonteDescartadas(List<Carta> monteDescartadas) {
+	public void setMonteDescartadas(Pilha<Carta> monteDescartadas) {
 		this.monteDescartadas = monteDescartadas;
 	}
-/*
-	public void pegarCarta() {
-	    Carta carta = baralhoDeClasse.distribuirCarta();
-	    if (carta == null) { // se o baralho de classe acabar
-	        if (monteDescartadas.size() == 0) { // se não houver cartas no montante, não há como pegar cartas
-	            return;
-	        }
-	        devolverCartas(monteDescartadas); // as cartas do montante são devolvidas ao baralho de classe e embaralhadas
-	        carta = baralhoDeClasse.distribuirCarta(); // a primeira carta é distribuída
-	    }
-	    cartas.add(carta);
+
+	public void pegarCarta(int quantidade) {
+		
+		for(int i = 0; i < quantidade; i++) {	
+			Carta carta = baralhoDeClasse.distribuirCarta();
+			if (carta == null) { // se o baralho de classe acabar
+				if (monteDescartadas.size() == 0) { // se não houver cartas no montante, não há como pegar cartas
+					devolverCartas(monteDescartadas); // as cartas do montante são devolvidas ao baralho de classe e embaralhadas
+				}
+				carta = baralhoDeClasse.distribuirCarta(); // a primeira carta é distribuída
+			}
+			if(cartasMao.size() <= 4) {
+				cartasMao.add(carta);	
+			} else {
+				monteDescartadas.push(carta);
+				throw new Excessao( "\nVocê já tem 4 cartas na mão!\n" );
+			}
+		}
 	}
-/*
-	/*
-	public void devolverCartas(List<Carta> cartasDescartadas) {
+
+	
+	
+	public void devolverCartas(Pilha<Carta> cartasDescartadas) {
 	    baralhoDeClasse.adicionarCartas(cartasDescartadas); // adiciona as cartas descartadas ao baralho de classe
 	    baralhoDeClasse.embaralhar(); // embaralha o baralho de classe
-	    monteDescartadas.clear(); // limpa a lista de cartas descartadas
-	}*/
+	    // monteDescartadas.clear(); // limpa a lista de cartas descartadas
+	}
 
 	public void descartarCarta(int index) {
 		Carta carta = cartasMao.remove(index);
-		monteDescartadas.add(carta); // Adiciona a carta diretamente na lista de descartadas
+		monteDescartadas.push(carta); // Adiciona a carta diretamente na lista de descartadas
 	}
 
 	public void sofrerDano() {
 		Carta carta = baralhoDeVida.distribuirCarta();
 		if (carta != null) {
-			monteDescartadas.add(carta); // Adiciona a carta de dano diretamente na lista de descartadas
+			monteDescartadas.push(carta); // Adiciona a carta de dano diretamente na lista de descartadas
 		}
 	}
 
@@ -104,7 +114,7 @@ public class Jogador {
 		return cartasMao;
 	}
 	
-	public List<Carta> getMonteDescartadas() {
+	public Pilha<Carta> getMonteDescartadas() {
 		return monteDescartadas;
 	}
 
