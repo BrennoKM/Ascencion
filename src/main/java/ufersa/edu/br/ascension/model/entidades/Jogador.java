@@ -10,10 +10,6 @@ import ufersa.edu.br.ascension.model.baralho.MaoJogador;
 import ufersa.edu.br.ascension.model.enums.Enums;
 import ufersa.edu.br.ascension.model.enums.Enums.Naipe;
 
-/**
- *
- * @author brenn
- */
 public class Jogador {
     String nome;
     private Baralho baralhoClasse = null;
@@ -62,5 +58,21 @@ public class Jogador {
     
     public void mostrarBaralho(){
         baralhoClasse.mostrar();
+    }
+    
+    public MaoJogador getCartasMao(){
+        return this.mao;
+    }
+    
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public String toString() {
+        return "Informações do Jogador:\n"
+				+ "--------------------------------------------------------------"
+				+ "\nNome = " + nome + "\nCartas = " + mao + "\nMonteDescartadas = " + baralhoDescarte
+				+ "\nBaralhoDeClasse:\n" + baralhoClasse.mostrar() + "\nBaralhoDeVida:\n" + baralhoVida.mostrar() + "\n";
+	
     }
 }

@@ -8,11 +8,6 @@ import ufersa.edu.br.ascension.model.enums.Enums.Valor;
 import ufersa.edu.br.ascension.model.enums.Enums.Naipe;
 import ufersa.edu.br.ascension.model.estrutudadados.MyArrayList;
 
-
-/**
- *
- * @author brenn
- */
 public class Baralho {
     private MyArrayList<Carta> cartas;
    

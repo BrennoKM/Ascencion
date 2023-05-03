@@ -6,10 +6,6 @@ package ufersa.edu.br.ascension.model.baralho;
 
 import ufersa.edu.br.ascension.model.estrutudadados.MyStack;
 
-/**
- *
- * @author brenn
- */
 public class MaoJogador {
     private MyStack<Carta> mao = null;
     private MyStack<Carta> maoAuxiliar = null;
@@ -56,6 +52,16 @@ public class MaoJogador {
             }
             maoAuxiliar = null;
             return carta;
+        }
+        return null;
+    }
+    
+    public String toString(){
+        String str = "";
+        for(int i = 0; i < mao.size()-1; i++){
+            if(mao.search(i) != null){
+                str += mao.search(i).toString();
+            }
         }
         return null;
     }

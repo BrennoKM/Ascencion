@@ -9,10 +9,6 @@ import ufersa.edu.br.ascension.model.baralho.Carta;
 import ufersa.edu.br.ascension.model.baralho.MaoMonstro;
 import ufersa.edu.br.ascension.model.enums.Enums.Valor;
 
-/**
- *
- * @author brenn
- */
 public class Monstro {
     private Baralho baralhoMonstro = null;
     private Baralho monstrosMortos = null;
@@ -63,6 +59,11 @@ public class Monstro {
         }
         return null;
     }
+    
+    public MaoMonstro getCartasMao(){
+        return mao;
+    }
+    
     
     public void mostrarBaralho(){
         baralhoMonstro.mostrar();

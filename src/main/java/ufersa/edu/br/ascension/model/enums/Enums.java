@@ -4,10 +4,6 @@
  */
 package ufersa.edu.br.ascension.model.enums;
 
-/**
- *
- * @author brenn
- */
 public class Enums {
 	public enum Naipe implements Comparable<Naipe> {
 		ESPADAS("Assassinos"), COPAS("Paladinos"), OUROS("Magos"), PAUS("Guerreiros");

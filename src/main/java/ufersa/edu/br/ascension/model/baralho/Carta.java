@@ -7,10 +7,6 @@ package ufersa.edu.br.ascension.model.baralho;
 import ufersa.edu.br.ascension.model.enums.Enums.Valor;
 import ufersa.edu.br.ascension.model.enums.Enums.Naipe;
 
-/**
- *
- * @author brenn
- */
 public class Carta {
 
     // Atributos privados da carta
