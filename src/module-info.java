@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Robot
- *
- */
-module Ascencion {
-}
