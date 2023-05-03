@@ -38,7 +38,7 @@ public class Jogador {
         }
     }
     
-    public void cartaHeroiDerrotada(int index){
+    public void usarCarta(int index){
         if(mao.consultarIndice(index) != null){
             baralhoDescarte.addCarta(mao.removerIndice(index));
         }
