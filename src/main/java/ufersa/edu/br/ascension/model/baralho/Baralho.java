@@ -75,7 +75,7 @@ public class Baralho {
         return cartas.isEmpty();
     }
     
-    public String mostrar() {
+    public String toString() {
     	String str = "";
     	int i = 0;
     	for (Carta c: cartas)

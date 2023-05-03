@@ -107,10 +107,13 @@ public class Game {
 		
 		Monstro monster = new Monstro();
 		div();
-		System.out.println(monster.toString());
+		
 		monster.sacarCartas();
 		div();
-                System.out.println(monster.getCartasMao());
+		//monster.toString();  
+		monster.monstroDerrotado(1);
+		monster.monstroDerrotado(2);
+		System.out.println(monster);
 		div();
 		   
 		Baralho baralho = new Baralho();

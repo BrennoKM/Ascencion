@@ -41,13 +41,14 @@ public class MaoMonstro {
         if(!mao.isEmpty() && (index<mao.size())){
             Carta carta = mao.search(index);
             maoAuxiliar = new MyStack<>(4);
-            for(int i = 0; i < mao.size(); i++){
+            
+            for(int i = 0; i < mao.getTop()+1; i++){
                 if(index != i){
                     maoAuxiliar.push(mao.search(i));
                 }
             }
             mao = new MyStack<>(4);
-            for(int i = 0; i < maoAuxiliar.size(); i++){
+            for(int i = 0; i < maoAuxiliar.getTop()+1; i++){
                 mao.push(maoAuxiliar.search(i));
             }
             maoAuxiliar = null;
@@ -65,11 +66,11 @@ public class MaoMonstro {
     
     public String toString(){
         String str = "";
-        for(int i = 0; i < mao.size()-1; i++){
+        for(int i = 0; i < mao.getTop()+1; i++){
             if(mao.search(i) != null){
-                str += mao.search(i).toString();
+                str += mao.search(i).toString() + "\n";
             }
         }
-        return null;
+        return str;
     }
 }

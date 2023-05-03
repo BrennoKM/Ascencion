@@ -100,4 +100,8 @@ public class MyStack<T> implements MyStackInterface<T>{
     public int size() {
         return this.size;
     }
+   
+    public int getTop() {
+    	return this.top;
+    }
 }
