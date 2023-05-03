@@ -1,4 +1,4 @@
-package ufersa.edu.br.ascension.model.estrutudadados;
+package estruturadedados;
 
 import java.util.Arrays;
 import java.util.Iterator;
