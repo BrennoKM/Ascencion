@@ -23,7 +23,6 @@ public class Carta {
     public int getValor() {
     	return valor.getValor();
     }
-
     
     // Método para acessar o naipe da carta
     public Naipe getNaipeEnum() {

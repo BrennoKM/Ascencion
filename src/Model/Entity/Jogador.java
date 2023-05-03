@@ -9,7 +9,7 @@ import Model.Entity.Enums.Valor;
 public class Jogador {
 	private String nome;
 	private String senha;
-	private List<Carta> cartas;
+	private List<Carta> cartasMao;
 	private List<Carta> monteDescartadas;
 	private Baralho baralhoDeClasse;
 	private Baralho baralhoDeVida;
@@ -18,25 +18,30 @@ public class Jogador {
 		
 	}
 
-	public Jogador(String nome, Naipe naipeClasse, Naipe naipeVida) {
+	public Jogador(String nome, Naipe naipeClasse, Naipe naipeClasse2) {
 	    this.nome = nome;
-	    this.cartas = new ArrayList<>();
-	    this.baralhoDeClasse = new Baralho(naipeClasse);
+	    this.cartasMao = new ArrayList<>();
+	    this.baralhoDeClasse = new Baralho();
+	    this.baralhoDeVida = new Baralho();
+	    baralhoDeVida.limpar();
 	    // o naipe do baralho de vida é o inverso do naipe do baralho de classe
-	    this.baralhoDeVida = new Baralho(inverterNaipe(naipeClasse));
+	    for (Valor valor : Valor.values()) {
+	    	baralhoDeVida.adicionarCarta(new Carta(inverterNaipe(naipeClasse), valor));
+	    	baralhoDeVida.adicionarCarta(new Carta(inverterNaipe(naipeClasse2), valor));
+        }
 	    this.monteDescartadas = new ArrayList<>(); // Lista vazia de cartas descartadas
 	}
 
 	private Naipe inverterNaipe(Naipe naipe) {
 	    switch(naipe) {
 	        case ESPADAS:
-	            return Naipe.COPAS;
-	        case COPAS:
-	            return Naipe.ESPADAS;
-	        case OUROS:
 	            return Naipe.PAUS;
-	        case PAUS:
+	        case COPAS:
 	            return Naipe.OUROS;
+	        case OUROS:
+	            return Naipe.COPAS;
+	        case PAUS:
+	            return Naipe.ESPADAS;
 	        default:
 	            return null;
 	    }
@@ -74,7 +79,7 @@ public class Jogador {
 	}*/
 
 	public void descartarCarta(int index) {
-		Carta carta = cartas.remove(index);
+		Carta carta = cartasMao.remove(index);
 		monteDescartadas.add(carta); // Adiciona a carta diretamente na lista de descartadas
 	}
 
@@ -95,16 +100,16 @@ public class Jogador {
 		this.nome = nome;
 	}
 
-	public List<Carta> getCartas() {
-		return cartas;
+	public List<Carta> getCartasMao() {
+		return cartasMao;
 	}
 	
 	public List<Carta> getMonteDescartadas() {
 		return monteDescartadas;
 	}
 
-	public void setCartas(List<Carta> cartas) {
-		this.cartas = cartas;
+	public void setCartasMao(List<Carta> cartasMao) {
+		this.cartasMao = cartasMao;
 	}
 
 
@@ -129,7 +134,7 @@ public class Jogador {
 	public String toString() {
 		return "Informações do Jogador:\n"
 				+ "--------------------------------------------------------------"
-				+ "\nNome = " + nome + "\nCartas = " + cartas + "\nMonteDescartadas = " + monteDescartadas
-				+ "\nBaralhoDeClasse:\n" + baralhoDeClasse.mostrar() + "\nBaralhoDeVida=" + baralhoDeVida + "\n";
+				+ "\nNome = " + nome + "\nCartas = " + cartasMao + "\nMonteDescartadas = " + monteDescartadas
+				+ "\nBaralhoDeClasse:\n" + baralhoDeClasse.mostrar() + "\nBaralhoDeVida:\n" + baralhoDeVida.mostrar() + "\n";
 	}
 }

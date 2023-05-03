@@ -99,7 +99,6 @@ public class Game {
 	    }
 		*/
 		
-
 		Monstro monster = new Monstro();
 		monster.adicionarCartas();
 		monster.embaralhar();
@@ -126,29 +125,28 @@ public class Game {
 		} */
 		
 		 System.out.println("\nBEM-VINDO AO GAME ASCENSION\n");
-		 Jogador jogador = new Jogador(); // Jogador criado
-		 String heroi ="", heroi2 ="";
+
+		 Naipe heroi = Naipe.PAUS, heroi2 = Naipe.OUROS;
 			System.out.print("Digite o nome do seu jogador:");
 			String name = scanner.next();
-			jogador.setNome(name);
 			System.out.print("Escolha a sua classe:\n[G]uerreiros\n[P]aladinos\n[A]assassinos\n[M]agos\nSua opção:");
 			char opcao = scanner.next().charAt(0);
 			switch(opcao) {
 			case 'G': 
 			case 'g':
-				heroi = "Guerreiros";
+				heroi = Naipe.PAUS;
 				break;
 			case 'P': 
 			case 'p':
-				heroi = "Paladinos";
+				heroi = Naipe.COPAS;
 				break;
 			case 'A': 
 			case 'a':
-				heroi = "Assassinos";
+				heroi = Naipe.ESPADAS;
 				break;
 			case 'M': 
 			case 'm':
-				heroi = "Magos";
+				heroi = Naipe.OUROS;
 				break;
 			default:
 				System.out.println("Opção invalida");
@@ -159,39 +157,46 @@ public class Game {
 			switch(opcao2) {
 			case 'G': 
 			case 'g':
-				heroi2 = "Guerreiros";
+				heroi2 = Naipe.PAUS;
 				break;
 			case 'P': 
 			case 'p':
-				heroi2 = "Paladinos";
+				heroi2 = Naipe.COPAS;
 				break;
 			case 'A': 
 			case 'a':
-				heroi2 = "Assassinos";
+				heroi2 = Naipe.ESPADAS;
 				break;
 			case 'M': 
 			case 'm':
-				heroi2 = "Magos";
+				heroi2 = Naipe.OUROS;
 				break;
 			default:
 				System.out.println("Opção invalida");
 			}
 			
-			System.out.print("Herois escolhidos: " + heroi + " e " + heroi2 + "\n");
+			System.out.print("Herois escolhidos: " + heroi.getNaipe() + " e " + heroi2.getNaipe() + "\n");
 	        
 			Baralho baralhoJogador = new Baralho();
 			baralhoJogador.limpar();
 			
 			for (Carta carta : baralho.getCartas()) {
-			    if (carta.getNaipe().equals(heroi)) 
+			    if (carta.getNaipe().equals(heroi.getNaipe())) 
 			    	baralhoJogador.adicionarCarta(carta);
 			}
 			
 			for (Carta carta : baralho.getCartas()) {
-			    if (carta.getNaipe().equals(heroi2)) 
+			    if (carta.getNaipe().equals(heroi2.getNaipe())) 
 			    	baralhoJogador.adicionarCarta(carta);
 			}
+			
+			baralhoJogador.embaralhar();
+			
+			Jogador jogador = new Jogador(name, heroi, heroi2); // Jogador criado
 			jogador.setBaralhoDeClasse(baralhoJogador);
+			jogador.getBaralhoDeVida().embaralhar();
+			
+			
 			System.out.print(jogador.toString());
 		
 	}

@@ -59,6 +59,7 @@ public class Baralho {
 
     public Carta distribuirCarta() {
         if (!this.cartas.isEmpty()) {
+        	System.out.println(this.cartas.get(0));
         	return this.cartas.remove(0);
         }
         return null;
