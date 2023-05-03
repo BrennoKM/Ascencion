@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ufersa.edu.br.ascension.model.baralho;
+package Model.Entity;
 
-import ufersa.edu.br.ascension.model.estrutudadados.MyStack;
+import estruturadedados.MyStack;
 
-public class MaoMonstro {
+public class MaoJogador {
     private MyStack<Carta> mao = null;
     private MyStack<Carta> maoAuxiliar = null;
     
-    public MaoMonstro(){
+    public MaoJogador(){
         mao = new MyStack<>(4);
     }
     

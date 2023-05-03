@@ -100,13 +100,13 @@ public class Game {
 		*/
 		
 		Monstro monster = new Monstro();
-		monster.adicionarCartas();
-		monster.embaralhar();
+		monster.getBaralhoMonstro().shuffle();
+		monster.sacarCartas();
 		div();
 		System.out.println(monster.toString());
-		monster.pegarCartas();
+		monster.sacarCartas();
 		div();
-		monster.mostrarCartasJogadas();
+		System.out.println(monster.getMao());
 		div();
 		   
 		Baralho baralho = new Baralho();
@@ -178,28 +178,29 @@ public class Game {
 			System.out.print("Herois escolhidos: " + heroi.getNaipe() + " e " + heroi2.getNaipe() + "\n");
 	        
 			Baralho baralhoJogador = new Baralho();
-			baralhoJogador.limpar();
+			baralhoJogador.limparBaralho();
 			
 			for (Carta carta : baralho.getCartas()) {
 			    if (carta.getNaipe().equals(heroi.getNaipe())) 
-			    	baralhoJogador.adicionarCarta(carta);
+			    	baralhoJogador.addCarta(carta);
 			}
 			
 			for (Carta carta : baralho.getCartas()) {
 			    if (carta.getNaipe().equals(heroi2.getNaipe())) 
-			    	baralhoJogador.adicionarCarta(carta);
+			    	baralhoJogador.addCarta(carta);
 			}
 			
-			baralhoJogador.embaralhar();
+			baralhoJogador.shuffle();
 			
-			Jogador jogador = new Jogador(name, heroi, heroi2); // Jogador criado
-			jogador.setBaralhoDeClasse(baralhoJogador);
-			jogador.getBaralhoDeVida().embaralhar();
+			Jogador jogador = new Jogador(name, heroi); // Jogador criado
+			jogador.setBaralhoClasse(baralhoJogador);
+			jogador.getBaralhoVida().shuffle();
 			
-			
+			jogador.sacarCartas();
 			System.out.print(jogador.toString());
 			
-			jogador.pegarCarta(4);
+			jogador.sacarCartas();
+			System.out.println(jogador.getMao());
 		
 	}
 	

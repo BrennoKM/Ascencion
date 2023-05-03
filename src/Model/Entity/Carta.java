@@ -6,9 +6,9 @@ import Model.Entity.Enums.Valor;
 public class Carta {
 
     // Atributos privados da carta
-    private Naipe naipe;
-    private Valor valor;
-    private boolean faceVirada;
+    private Naipe naipe = null;
+    private Valor valor = null;
+    private boolean faceVirada = false;
     // Construtor que recebe o naipe e valor da carta
     public Carta(Naipe naipe, Valor valor) {
         this.naipe = naipe;
@@ -23,6 +23,7 @@ public class Carta {
     public int getValor() {
     	return valor.getValor();
     }
+
     
     // Método para acessar o naipe da carta
     public Naipe getNaipeEnum() {
@@ -33,12 +34,6 @@ public class Carta {
     public Valor getValorEnum() {
         return valor;
     }
-
-    /*
-    // Método que retorna uma string formatada com o valor e naipe da carta
-    public String toString() {
-        return valor + " de " + naipe;
-    }*/
     
     public String toString() {
     	String texto = "";

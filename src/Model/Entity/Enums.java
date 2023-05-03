@@ -1,5 +1,8 @@
 package Model.Entity;
 
+import main.java.ufersa.edu.br.ascension.model.enums.Enums.Naipe;
+import main.java.ufersa.edu.br.ascension.model.enums.Enums.Valor;
+
 public class Enums {
 	public enum Naipe implements Comparable<Naipe> {
 		ESPADAS("Assassinos"), COPAS("Paladinos"), OUROS("Magos"), PAUS("Guerreiros");
@@ -29,5 +32,20 @@ public class Enums {
 			this.valor = valor;
 			this.valorString = valorString;
 		}
+	}
+        
+        public static Naipe inverterNaipe(Naipe naipe) {
+	    switch(naipe) {
+	        case ESPADAS:
+	            return Naipe.COPAS;
+	        case COPAS:
+	            return Naipe.ESPADAS;
+	        case OUROS:
+	            return Naipe.PAUS;
+	        case PAUS:
+	            return Naipe.OUROS;
+	        default:
+	            return null;
+	    }
 	}
 }

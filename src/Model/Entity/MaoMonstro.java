@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ufersa.edu.br.ascension.model.baralho;
+package Model.Entity;
 
-import ufersa.edu.br.ascension.model.estrutudadados.MyStack;
+import estruturadedados.MyStack;
 
-public class MaoJogador {
+public class MaoMonstro {
     private MyStack<Carta> mao = null;
     private MyStack<Carta> maoAuxiliar = null;
     
-    public MaoJogador(){
-        mao = new MyStack<>(3);
+    public MaoMonstro(){
+        mao = new MyStack<>(4);
     }
     
     public boolean addCarta(Carta carta){
@@ -57,20 +57,20 @@ public class MaoJogador {
         return null;
     }
     
-    public String toString(){
-        String str = "";
-        for(int i = 0; i < mao.size()-1; i++){
-            if(mao.search(i) != null){
-                str += mao.search(i).toString();
-            }
-        }
-        return null;
-    }
-    
     public boolean verificarCheia(){
         if(mao.isFull()){
             return true;
         }
         return false;
+    }
+    
+    public String toString(){
+        String str = "";
+        for(int i = 0; i < mao.getTop()+1; i++){
+            if(mao.search(i) != null){
+                str += mao.search(i).toString() + "\n";
+            }
+        }
+        return str;
     }
 }

@@ -1,4 +1,4 @@
-package ufersa.edu.br.ascension.model.estrutudadados;
+package estruturadedados;
 
 public interface MyStackInterface<T> {
     void push(T value);

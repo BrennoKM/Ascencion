@@ -1,4 +1,4 @@
-package ufersa.edu.br.ascension.model.estrutudadados;
+package estruturadedados;
 
 public class MyStackException extends RuntimeException{
     private static final long serialVersionUID = 4652958143051993454L;

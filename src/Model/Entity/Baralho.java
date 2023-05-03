@@ -1,29 +1,17 @@
 package Model.Entity;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import Model.Entity.Enums.Naipe;
 import Model.Entity.Enums.Valor;
 import estruturadedados.Pilha;
+import estruturadedados.MyArrayList;
+import estruturadedados.MyStack;
 
 public class Baralho {
-
-   //private List<Carta> cartas;
-	private ArrayList<Carta> cartas;
 	
-    public ArrayList<Carta> getCartas() {
-		return cartas;
-	}
-
-	public void setCartas(ArrayList<Carta> cartas) {
-		this.cartas = cartas;
-	}
-
-	public Baralho() {
-        this.cartas = new ArrayList<>();
-        
+    private MyArrayList<Carta> cartas;
+   
+    public Baralho(){
+        this.cartas = new MyArrayList<>();
         for (Naipe naipe : Naipe.values()) {
             for (Valor valor : Valor.values()) {
                 this.cartas.add(new Carta(naipe, valor));
@@ -32,60 +20,72 @@ public class Baralho {
     }
     
     public Baralho(Naipe naipe) {
-    	this.cartas = new ArrayList<>();
+    	this.cartas = new MyArrayList<>();
         this.cartas.clear();
         for (Valor valor : Valor.values()) {
             this.cartas.add(new Carta(naipe, valor));
         }
     }
-
-    public int tamanho() {
-        return this.cartas.size();
+    
+    public void addBaralho(Baralho baralho) {
+    if (baralho != null) {
+        for (Carta carta : baralho.getCartas()) {
+            addCarta(carta);
+        }
     }
-
-    public void adicionarCarta(Carta carta) {
-       // this.cartas.add(carta);
+}
+    
+    public void shuffle(){
+        cartas.shuffle();
+    }
+    
+    public MyArrayList<Carta> getCartas() {
+		return cartas;
+    }
+    
+    public void setCartas(MyArrayList<Carta> cartas) {
+		this.cartas = cartas;
+    }
+    
+    public void addCarta(Carta carta) {
     	cartas.add(carta);
     }
     
-    
-    public void adicionarCartas(List<Carta> cartas) {
+    public void addCartas(MyArrayList<Carta> cartas) {
         for (Carta carta : cartas) {
-            adicionarCarta(carta);
+            addCarta(carta);
         }
     }
     
-    public void adicionarCartas(Pilha<Carta> cartas) {
-        for (int i = 0; i < cartas.size(); i++) {
-        	System.out.println(cartas.peek());
-            adicionarCarta(cartas.pop());
-        }
+    public void addCartas(MyStack<Carta> cartas) {
+    	 for (int i = 0; i < cartas.size(); i++) {
+         	System.out.println(cartas.peek());
+             addCarta(cartas.pop());
+         }
     }
-
-    public void embaralhar() {
-    	Collections.shuffle(this.cartas);
+    
+    public void removeCarta(Carta removida) {
+    	if (removida != null) {
+    		cartas.remove(removida);
+    	}
     }
-
+    
+    public void limparBaralho() {
+    	cartas.clear();
+    }
+    
     public Carta distribuirCarta() {
         if (!this.cartas.isEmpty()) {
-        	System.out.println(this.cartas.get(0));
         	return this.cartas.remove(0);
         }
         return null;
     }
     
-    public void removerCarta(Carta removida) {
-    	if (removida != null) {
-    		cartas.remove(removida);
-    	}
-    }
-
-    // limpar cartas:
-    public void limpar() {
-    	cartas.clear();
+    public boolean verificarVazio(){
+        return cartas.isEmpty();
     }
     
-    public String mostrar() {
+    public String toString() {
     	String str = "";
     	int i = 0;
     	for (Carta c: cartas)
@@ -93,14 +93,5 @@ public class Baralho {
     	return str;
     }
     
-    public boolean darCarta(Carta carta, Baralho outroBaralho) {
-    	if(!cartas.contains(carta)) {
-    		return false;
-    	}else {
-    		cartas.remove(carta);
-    		outroBaralho.adicionarCarta(carta);
-    		return true;
-    	}
-    }
-
+    
 }
