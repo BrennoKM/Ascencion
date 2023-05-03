@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaLoginController">
+   <children>
+      <Pane layoutX="-88.0" layoutY="-135.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fffffff;">
+         <children>
+            <Label layoutX="277.0" layoutY="147.0" text="Ranking">
+               <font>
+                  <Font name="Calibri Light" size="27.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnEntrar" layoutX="421.0" layoutY="336.0" mnemonicParsing="false" onAction="#realizarLogin" style="-fx-background-color: #253342;" text="Entrar" textFill="WHITE" />
+            <Button fx:id="btnCriarConta" layoutX="215.0" layoutY="336.0" mnemonicParsing="false" onAction="#criarConta" style="-fx-background-color: #253342;" text="Criar Conta" textFill="WHITE" />
+            <Label fx:id="labelMensagem" layoutX="320.0" layoutY="312.0" prefHeight="17.0" prefWidth="40.0" textFill="RED">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Button layoutX="193.0" layoutY="457.0" mnemonicParsing="false" style="-fx-background-color: #253342;" text="Visualizar Ranking" textFill="WHITE" />
+            <Button layoutX="120.0" layoutY="457.0" mnemonicParsing="false" style="-fx-background-color: #253342;" text="Tutorial" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
