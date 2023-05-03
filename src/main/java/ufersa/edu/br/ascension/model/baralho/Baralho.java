@@ -65,6 +65,10 @@ public class Baralho {
     	}
     }
     
+    public void limparBaralho() {
+    	cartas.clear();
+    }
+    
     public Carta distribuirCarta() {
         if (!this.cartas.isEmpty()) {
         	return this.cartas.remove(0);

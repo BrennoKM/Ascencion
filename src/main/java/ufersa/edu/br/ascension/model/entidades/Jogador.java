@@ -31,12 +31,13 @@ public class Jogador {
         while(mao.verificarCheia()){
             if(baralhoClasse.verificarVazio()){
                 baralhoClasse.setCartas(baralhoDescarte.getCartas());
+                baralhoDescarte.limparBaralho();
             }
             mao.addCarta(baralhoClasse.distribuirCarta());
         }
     }
     
-    public void heroiDerrotado(int index){
+    public void cartaHeroiDerrotada(int index){
         if(mao.consultarIndice(index) != null){
             baralhoDescarte.addCarta(mao.removerIndice(index));
         }
