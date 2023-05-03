@@ -57,7 +57,7 @@ public class Jogador {
     }
     
     public void mostrarBaralho(){
-        baralhoClasse.mostrar();
+        baralhoClasse.toString();
     }
     
     public MaoJogador getCartasMao(){
@@ -72,7 +72,7 @@ public class Jogador {
         return "Informações do Jogador:\n"
 				+ "--------------------------------------------------------------"
 				+ "\nNome = " + nome + "\nCartas = " + mao + "\nMonteDescartadas = " + baralhoDescarte
-				+ "\nBaralhoDeClasse:\n" + baralhoClasse.mostrar() + "\nBaralhoDeVida:\n" + baralhoVida.mostrar() + "\n";
+				+ "\nBaralhoDeClasse:\n" + baralhoClasse.toString() + "\nBaralhoDeVida:\n" + baralhoVida.toString() + "\n";
 	
     }
 }

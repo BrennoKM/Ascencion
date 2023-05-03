@@ -17,6 +17,8 @@ public class Monstro {
     public Monstro(){
         baralhoMonstro = new Baralho();
         baralhoMonstro.shuffle();
+        monstrosMortos = new Baralho();
+        monstrosMortos.limparBaralho();
         mao = new MaoMonstro();
     }
     
@@ -36,12 +38,14 @@ public class Monstro {
     }
     
     public boolean sacarCartas(){
-        while(mao.verificarCheia()){
+        while(!mao.verificarCheia()){
             Carta carta = baralhoMonstro.distribuirCarta();
+            
             if(carta == null){
                 return false;
             } else {
                 mao.addCarta(baralhoMonstro.distribuirCarta());
+                
             }
         }
         return true;
@@ -66,6 +70,15 @@ public class Monstro {
     
     
     public void mostrarBaralho(){
-        baralhoMonstro.mostrar();
+        baralhoMonstro.toString();
+    }
+    
+    
+    public String toString() {
+        return "Informações Monstros:\n"
+				+ "--------------------------------------------------------------"
+				+ "\nCartas em campo = " + mao + "\nMonteDescartadas = " + monstrosMortos
+				+ "\nBaralho: " + baralhoMonstro + "";
+	
     }
 }

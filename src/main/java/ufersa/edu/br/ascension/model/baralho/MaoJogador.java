@@ -40,14 +40,15 @@ public class MaoJogador {
     public Carta removerIndice(int index){
         if(!mao.isEmpty() && (index<mao.size())){
             Carta carta = mao.search(index);
-            maoAuxiliar = new MyStack<>(3);
-            for(int i = 0; i < mao.size(); i++){
+            maoAuxiliar = new MyStack<>(4);
+            
+            for(int i = 0; i < mao.getTop()+1; i++){
                 if(index != i){
                     maoAuxiliar.push(mao.search(i));
                 }
             }
-            mao = new MyStack<>(3);
-            for(int i = 0; i < maoAuxiliar.size(); i++){
+            mao = new MyStack<>(4);
+            for(int i = 0; i < maoAuxiliar.getTop()+1; i++){
                 mao.push(maoAuxiliar.search(i));
             }
             maoAuxiliar = null;
