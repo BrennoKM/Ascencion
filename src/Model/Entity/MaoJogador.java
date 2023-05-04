@@ -4,19 +4,20 @@
  */
 package Model.Entity;
 
+import estruturadedados.MyLinkedList;
 import estruturadedados.MyStack;
 
 public class MaoJogador {
-    private MyStack<Carta> mao = null;
-    private MyStack<Carta> maoAuxiliar = null;
+    private MyLinkedList<Carta> mao = null;
+    private MyLinkedList<Carta> maoAuxiliar = null;
     
     public MaoJogador(){
-        mao = new MyStack<>(4);
+        mao = new MyLinkedList<>();
     }
     
     public boolean addCarta(Carta carta){
         if(carta != null && !mao.isFull()){
-            mao.push(carta);
+            mao.addLast(carta);
             return true;
         }
         return false;
@@ -24,14 +25,14 @@ public class MaoJogador {
     
     public boolean removeTop(){
         if(!mao.isEmpty()){
-            mao.pop();
+            mao.removeLast();
         }
         return false;
     }
     
     public Carta consultarIndice(int index){
         if(!mao.isEmpty() && (index<mao.size())){
-            return mao.search(index);
+            return mao.searchIndex(index);
             
         }
         return null;
@@ -39,17 +40,17 @@ public class MaoJogador {
     
     public Carta removerIndice(int index){
         if(!mao.isEmpty() && (index<mao.size())){
-            Carta carta = mao.search(index);
-            maoAuxiliar = new MyStack<>(4);
+            Carta carta = mao.searchIndex(index);
+            maoAuxiliar = new MyLinkedList<>();
             
-            for(int i = 0; i < mao.getTop()+1; i++){
+            for(int i = 0; i < mao.size(); i++){
                 if(index != i){
-                    maoAuxiliar.push(mao.search(i));
+                    maoAuxiliar.addLast(mao.searchIndex(i));
                 }
             }
-            mao = new MyStack<>(4);
-            for(int i = 0; i < maoAuxiliar.getTop()+1; i++){
-                mao.push(maoAuxiliar.search(i));
+            mao = new MyLinkedList<>();
+            for(int i = 0; i < maoAuxiliar.size(); i++){
+                mao.addLast(maoAuxiliar.searchIndex(i));
             }
             maoAuxiliar = null;
             return carta;
@@ -66,9 +67,9 @@ public class MaoJogador {
     
     public String toString(){
         String str = "";
-        for(int i = 0; i < mao.getTop()+1; i++){
-            if(mao.search(i) != null){
-                str += mao.search(i).toString() + "\n";
+        for(int i = 0; i < mao.size(); i++){
+            if(mao.searchIndex(i) != null){
+                str += mao.searchIndex(i).toString() + "\n";
             }
         }
         return str;

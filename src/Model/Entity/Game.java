@@ -112,8 +112,10 @@ public class Game {
 		div();
 		monster.monstroDerrotado(2);
 		System.out.println("Mãoo::\n" + monster.getMao());
+		System.out.println("derrotados:\n" + monster.getMonstrosMortos());
 		monster.sacarCartas();
 		System.out.println("\nbaralho:2:\n" + monster.getBaralhoMonstro());
+		System.out.println("mao211:\n" + monster.getMao());
 		   
 		Baralho baralho = new Baralho();
 		
@@ -224,6 +226,7 @@ public class Game {
 			System.out.println(jogador2.getMao());
 			jogador2.sacarCartas();
 			System.out.println(jogador2.getMao());
+			System.out.println("descartadas:\n" + jogador2.getBaralhoDescarte());
 		
 	}
 	

@@ -100,7 +100,7 @@ public class Monstro {
     public String toString() {
         return "Informações Monstros:\n"
 				+ "--------------------------------------------------------------"
-				+ "\nCartas em campo:\n" + mao + "\nMonteDescartadas:\n" + monstrosMortos
+				+ "\nCartas em campo:\n" + mao.toString() + "\nMonteDescartadas:\n" + monstrosMortos
 				+ "\nBaralho:\n" + baralhoMonstro + "";
 	
     }

@@ -4,19 +4,20 @@
  */
 package Model.Entity;
 
+import estruturadedados.MyLinkedList;
 import estruturadedados.MyStack;
 
 public class MaoMonstro {
-    private MyStack<Carta> mao = null;
-    private MyStack<Carta> maoAuxiliar = null;
+    private MyLinkedList<Carta> mao = null;
+    private MyLinkedList<Carta> maoAuxiliar = null;
     
     public MaoMonstro(){
-        mao = new MyStack<>(3);
+        mao = new MyLinkedList<>();
     }
     
     public boolean addCarta(Carta carta){
         if(carta != null && !mao.isFull()){
-            mao.push(carta);
+            mao.addLast(carta);
             return true;
         }
         return false;
@@ -24,51 +25,54 @@ public class MaoMonstro {
     
     public boolean removeTop(){
         if(!mao.isEmpty()){
-            mao.pop();
+            mao.removeLast();
         }
         return false;
     }
     
     public Carta consultarIndice(int index){
         if(!mao.isEmpty() && (index<mao.size())){
-            return mao.search(index);
+            return mao.searchIndex(index);
             
         }
         return null;
     }
     
     public Carta removerIndice(int index){
+    	
         if(!mao.isEmpty() && (index<mao.size())){
-            Carta carta = mao.search(index);
-            maoAuxiliar = new MyStack<>(4);
+            Carta carta = mao.searchIndex(index);
+            maoAuxiliar = new MyLinkedList<>();
             
-            for(int i = 0; i < mao.getTop()+1; i++){
+            for(int i = 0; i < mao.size(); i++){
                 if(index != i){
-                    maoAuxiliar.push(mao.search(i));
+                    maoAuxiliar.addLast(mao.searchIndex(i));
                 }
             }
-            mao = new MyStack<>(4);
-            for(int i = 0; i < maoAuxiliar.getTop()+1; i++){
-                mao.push(maoAuxiliar.search(i));
+            mao = new MyLinkedList<>();
+            for(int i = 0; i < maoAuxiliar.size(); i++){
+                mao.addLast(maoAuxiliar.searchIndex(i));
             }
             maoAuxiliar = null;
+            System.out.println(carta);
             return carta;
         }
         return null;
     }
     
     public boolean verificarCheia(){
-        if(mao.isFull()){
+        if(mao.size() >= 3){
             return true;
+        } else {
+            return false;	
         }
-        return false;
     }
     
     public String toString(){
         String str = "";
-        for(int i = 0; i < mao.getTop()+1; i++){
-            if(mao.search(i) != null){
-                str += mao.search(i).toString() + "\n";
+        for(int i = 0; i < mao.size(); i++){
+            if(mao.searchIndex(i) != null){
+                str += mao.searchIndex(i).toString() + "\n";
             }
         }
         return str;
