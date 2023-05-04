@@ -35,12 +35,25 @@ public class Carta {
         return valor;
     }
     
-    public String toString() {
+    public boolean isFaceVirada() {
+		return faceVirada;
+	}
+
+	public void setFaceVirada(boolean faceVirada) {
+		this.faceVirada = faceVirada;
+	}
+
+	public String toString() {
     	String texto = "";
-    	if(faceVirada)
-    		texto += naipe.getNaipe() + " valor " + valor.getValorString();
-    	else
-    		texto += "Não há carta selecionada";
+    	if(valor.getValorString().equals("slot vazio")) {
+    		faceVirada = false;
+    	}
+    	if(faceVirada) {
+    		texto += naipe.getNaipe() + " valor " + valor.getValorString();	
+    	}
+    	else {
+    		texto += "Não há carta selecionada";	
+    	}
     	return texto;
     }
 }

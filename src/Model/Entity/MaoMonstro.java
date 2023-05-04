@@ -11,7 +11,7 @@ public class MaoMonstro {
     private MyStack<Carta> maoAuxiliar = null;
     
     public MaoMonstro(){
-        mao = new MyStack<>(4);
+        mao = new MyStack<>(3);
     }
     
     public boolean addCarta(Carta carta){

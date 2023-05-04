@@ -19,6 +19,8 @@ public class Jogador {
         this.nome = nome;
         baralhoClasse = new Baralho(classe);
         baralhoVida = new Baralho(Enums.inverterNaipe(classe));
+        baralhoDescarte = new Baralho();
+        baralhoDescarte.limparBaralho();
         mao = new MaoJogador();
     }
     

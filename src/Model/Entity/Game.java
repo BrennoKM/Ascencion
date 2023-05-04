@@ -100,14 +100,20 @@ public class Game {
 		*/
 		
 		Monstro monster = new Monstro();
+		System.out.println("monstroo");
+		monster.removerDeuses();
 		monster.getBaralhoMonstro().shuffle();
 		monster.sacarCartas();
 		div();
-		System.out.println(monster.toString());
+		System.out.println(monster);
+		div();
+		System.out.println("\nmao::\n" + monster.getMao());
+		System.out.println("~~~~");
+		div();
+		monster.monstroDerrotado(2);
+		System.out.println("Mãoo::\n" + monster.getMao());
 		monster.sacarCartas();
-		div();
-		System.out.println(monster.getMao());
-		div();
+		System.out.println("\nbaralho:2:\n" + monster.getBaralhoMonstro());
 		   
 		Baralho baralho = new Baralho();
 		
@@ -177,7 +183,9 @@ public class Game {
 			
 			System.out.print("Herois escolhidos: " + heroi.getNaipe() + " e " + heroi2.getNaipe() + "\n");
 	        
-			Baralho baralhoJogador = new Baralho();
+			/* Essa parte do código é pra caso um só jogador queira dois naipes
+			 Baralho baralhoJogador = new Baralho();
+			 
 			baralhoJogador.limparBaralho();
 			
 			for (Carta carta : baralho.getCartas()) {
@@ -192,15 +200,30 @@ public class Game {
 			
 			baralhoJogador.shuffle();
 			
-			Jogador jogador = new Jogador(name, heroi); // Jogador criado
+			Jogador jogador = new Jogador(name, heroi);
 			jogador.setBaralhoClasse(baralhoJogador);
+			*/
+			
+			Jogador jogador = new Jogador(name, heroi); // Jogador criado
+			jogador.getBaralhoClasse().shuffle();
 			jogador.getBaralhoVida().shuffle();
 			
-			jogador.sacarCartas();
-			System.out.print(jogador.toString());
+			System.out.print(jogador);
 			
 			jogador.sacarCartas();
 			System.out.println(jogador.getMao());
+			
+			Jogador jogador2 = new Jogador(name, heroi2);
+			jogador2.getBaralhoClasse().shuffle();
+			jogador2.getBaralhoVida().shuffle();
+			
+			jogador2.sacarCartas();
+			System.out.println(jogador2);
+			
+			jogador2.usarCarta(2);
+			System.out.println(jogador2.getMao());
+			jogador2.sacarCartas();
+			System.out.println(jogador2.getMao());
 		
 	}
 	
