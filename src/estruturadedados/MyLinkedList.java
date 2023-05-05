@@ -116,6 +116,10 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T>{
 		Node previor = null;
 		Node remove = null;
 		
+		if(element == null) {
+			return null;
+		}
+		
 		if (head == null) {
 			throw new Excessao( "\nERRO: fila vazia!!!\n" );
 		}

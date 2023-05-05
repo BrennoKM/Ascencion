@@ -14,6 +14,8 @@ public class Jogador {
     private Baralho baralhoVida = null;
     private Baralho baralhoDescarte = null;
     private MaoJogador mao = null;
+    private String cor = null;
+    private String naipe = null;
     
     public Jogador(String nome, Naipe classe){
         this.nome = nome;
@@ -22,6 +24,8 @@ public class Jogador {
         baralhoDescarte = new Baralho();
         baralhoDescarte.limparBaralho();
         mao = new MaoJogador();
+        cor = this.getBaralhoClasse().getCartas().peek().getCor();
+        naipe = this.getBaralhoClasse().getCartas().peek().getNaipe();
     }
     
     public void sacarCartas(){
@@ -39,6 +43,12 @@ public class Jogador {
         if(mao.consultarIndice(index) != null){
             baralhoDescarte.addCarta(mao.removerIndice(index));
         }
+    }
+    
+    public void heroiDerrotado(Carta carta) {
+    	if(mao.getMao().get(carta) != null){
+    		baralhoDescarte.addCarta(mao.remover(carta));
+    	}
     }
     
     public boolean sofrerDano(){
@@ -99,6 +109,22 @@ public class Jogador {
 
 	public void setMao(MaoJogador mao) {
 		this.mao = mao;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public String getNaipe() {
+		return naipe;
+	}
+
+	public void setNaipe(String naipe) {
+		this.naipe = naipe;
 	}
 
 	public String toString() {

@@ -9,10 +9,16 @@ public class Carta {
     private Naipe naipe = null;
     private Valor valor = null;
     private boolean faceVirada = false;
+    private String cor = "";
     // Construtor que recebe o naipe e valor da carta
     public Carta(Naipe naipe, Valor valor) {
         this.naipe = naipe;
         this.valor = valor;
+        if(naipe.getNaipe().equals("Guerreiros") || naipe.getNaipe().equals("Assassinos")) {
+        	this.cor = "preto";
+        } else {
+        	this.cor = "vermelho";
+        }
         faceVirada = true;
     }
     
@@ -41,6 +47,14 @@ public class Carta {
 
 	public void setFaceVirada(boolean faceVirada) {
 		this.faceVirada = faceVirada;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 
 	public String toString() {

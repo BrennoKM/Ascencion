@@ -23,9 +23,18 @@ public class MaoMonstro {
         return false;
     }
     
+    public Carta remover(Carta carta) {
+    	if(!mao.isEmpty()) {
+    		mao.remove(carta);
+    		return carta;
+    	}
+    	return null;
+    }
+    
     public boolean removeTop(){
         if(!mao.isEmpty()){
             mao.removeLast();
+            return true;
         }
         return false;
     }
@@ -54,7 +63,7 @@ public class MaoMonstro {
                 mao.addLast(maoAuxiliar.searchIndex(i));
             }
             maoAuxiliar = null;
-            System.out.println(carta);
+            System.out.println("removido: " + carta);
             return carta;
         }
         return null;
@@ -67,7 +76,23 @@ public class MaoMonstro {
             return false;	
         }
     }
-    
+
+	public MyLinkedList<Carta> getMao() {
+		return mao;
+	}
+
+	public void setMao(MyLinkedList<Carta> mao) {
+		this.mao = mao;
+	}
+
+	public MyLinkedList<Carta> getMaoAuxiliar() {
+		return maoAuxiliar;
+	}
+
+	public void setMaoAuxiliar(MyLinkedList<Carta> maoAuxiliar) {
+		this.maoAuxiliar = maoAuxiliar;
+	}
+	
     public String toString(){
         String str = "";
         for(int i = 0; i < mao.size(); i++){
@@ -77,4 +102,5 @@ public class MaoMonstro {
         }
         return str;
     }
+    
 }

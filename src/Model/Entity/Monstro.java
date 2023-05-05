@@ -60,6 +60,12 @@ public class Monstro {
         }
     }
     
+    public void monstroDerrotado(Carta carta) {
+    	if(mao.getMao().get(carta) != null){
+    		monstrosMortos.addCarta(mao.remover(carta));
+    	}
+    }
+    
     public Carta consultarMao(int index){
         if(mao.consultarIndice(index) != null){
             return mao.consultarIndice(index);
@@ -67,6 +73,13 @@ public class Monstro {
         return null;
     }
     
+    public int numMonstrosMortos() {
+    	int cont = 0;
+    	while(cont < monstrosMortos.getCartas().getTop()) {
+    		cont++;
+    	}
+    	return cont;
+    }
     
     public Baralho getBaralhoMonstro() {
 		return baralhoMonstro;

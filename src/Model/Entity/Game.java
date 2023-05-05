@@ -99,6 +99,7 @@ public class Game {
 	    }
 		*/
 		
+		/* Testes
 		Monstro monster = new Monstro();
 		System.out.println("monstroo");
 		monster.removerDeuses();
@@ -115,7 +116,7 @@ public class Game {
 		System.out.println("derrotados:\n" + monster.getMonstrosMortos());
 		monster.sacarCartas();
 		System.out.println("\nbaralho:2:\n" + monster.getBaralhoMonstro());
-		System.out.println("mao211:\n" + monster.getMao());
+		System.out.println("mao211:\n" + monster.getMao());*/
 		   
 		Baralho baralho = new Baralho();
 		
@@ -212,6 +213,7 @@ public class Game {
 			
 			System.out.print(jogador);
 			
+			
 			jogador.sacarCartas();
 			System.out.println(jogador.getMao());
 			
@@ -222,12 +224,26 @@ public class Game {
 			jogador2.sacarCartas();
 			System.out.println(jogador2);
 			
+			/* testes
 			jogador2.usarCarta(2);
 			System.out.println(jogador2.getMao());
 			jogador2.sacarCartas();
 			System.out.println(jogador2.getMao());
 			System.out.println("descartadas:\n" + jogador2.getBaralhoDescarte());
+			*/
+			
+			Mesa mesa = new Mesa(jogador, jogador2);
 		
+			mesa.exibirMesa();
+			mesa.ataqueTodosMonstros();
+			System.out.println("----------------monstro------------------");
+			System.out.println(mesa.getMonster().getMao());
+			System.out.println("---------------jogadores------------------");
+			System.out.println("Descarte j1:\n" + mesa.getJogadores()[0].getBaralhoDescarte());
+			System.out.println("Mão j1:\n" + mesa.getJogadores()[0].getMao());
+			System.out.println("-------------------j----------------------");
+			System.out.println("Descarte j2:\n" + mesa.getJogadores()[1].getBaralhoDescarte());
+			System.out.println("Mão j2:\n" + mesa.getJogadores()[1].getMao());
 	}
 	
 	public static void div() {
