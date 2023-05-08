@@ -71,6 +71,8 @@ public class Mesa {
 	
 	public boolean ataque(Carta cartaAtacante, Carta cartaDefensor) {
 		if(cartaAtacante.getValor() > cartaDefensor.getValor()) {
+			Jogador j = reconhecerJogador(cartaAtacante);
+			j.curarDoDescarte(j.getNaipeEnum());
 			return true;  // se for maior o ataque deu certo
 		} 
 		if(cartaAtacante.getValor() == cartaDefensor.getValor()) {
@@ -78,6 +80,8 @@ public class Mesa {
 		}
 		return false;
 	}
+	
+	
 	
 	public boolean ataqueMonstro(Carta cartaAtacante, Jogador jogador) {
 		// monstro ataca a próxima carta de vida do jogador

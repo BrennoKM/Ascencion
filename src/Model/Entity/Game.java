@@ -235,7 +235,7 @@ public class Game {
 			Mesa mesa = new Mesa(jogador, jogador2);
 		
 			mesa.exibirMesa();
-			mesa.ataqueTodosMonstros();
+			//mesa.ataqueTodosMonstros();
 			System.out.println("----------------monstro------------------");
 			System.out.println(mesa.getMonster().getMao());
 			System.out.println("---------------jogadores------------------");
@@ -244,6 +244,24 @@ public class Game {
 			System.out.println("-------------------j----------------------");
 			System.out.println("Descarte j2:\n" + mesa.getJogadores()[1].getBaralhoDescarte());
 			System.out.println("Mão j2:\n" + mesa.getJogadores()[1].getMao());
+			System.out.println("wdawdawd");
+			
+			jogador.sofrerDano();
+			jogador.sacarCartas();
+			jogador.usarCarta(1);
+			jogador.usarCarta(2);
+			jogador.sofrerDano();
+			jogador.sofrerDano();
+			jogador.toString();
+
+			jogador.curarDoDescarte(jogador.getNaipeEnum());
+
+			jogador.curarDoDescarte(jogador.getNaipeEnum());
+
+			jogador.curarDoDescarte(jogador.getNaipeEnum());
+			System.out.println(jogador);
+			System.out.println("wdawdawd");
+			
 	}
 	
 	public static void div() {
