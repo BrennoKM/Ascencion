@@ -118,4 +118,8 @@ public class Fila<T> implements FilaInterface<T> {
 	    
 		System.out.println("\nCartas na mesa: " + (last+1));
 	}
+	
+	public int size() {
+		return this.last + 1;
+	}
 }

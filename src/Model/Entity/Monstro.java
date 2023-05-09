@@ -6,6 +6,7 @@ import java.util.Stack;
 import Model.Entity.Enums.Naipe;
 import Model.Entity.Enums.Valor;
 import estruturadedados.Fila;
+import estruturadedados.MyStack;
 import estruturadedados.Pilha;
 
 public class Monstro {
@@ -16,7 +17,6 @@ public class Monstro {
     
     public Monstro(){
         baralhoMonstro = new Baralho();
-        baralhoMonstro.shuffle();
         monstrosMortos = new Baralho();
         monstrosMortos.limparBaralho();
         mao = new MaoMonstro();
@@ -28,13 +28,17 @@ public class Monstro {
     }
     
     public void removerDeuses(){
-        for(int i = 0; i < 52; i++) {
+    	MyStack<Carta> aux = new MyStack<Carta>(48);
+        for(int i = 0; i < baralhoMonstro.getCartas().size(); i++) { // mudar de getTop() + 1 p size()
             Carta carta = baralhoMonstro.distribuirCarta();
-		if (carta.getValorEnum() != Valor.AS) {
-		// A carta tem valor "AS", faça algo aqui
-		baralhoMonstro.addCarta(carta);
-		}	
-	}
+            
+            
+            if (carta.getValorEnum() != Valor.AS) { // mudar de != pra ==
+			// A carta tem valor "AS", faça algo aqui
+				aux.push(carta);
+			} 
+        }
+        baralhoMonstro.addCartas(aux);
     }
     
     public boolean sacarCartas(){
@@ -44,8 +48,7 @@ public class Monstro {
             if(carta == null){
                 return false;
             } else {
-                mao.addCarta(baralhoMonstro.distribuirCarta());
-                
+                mao.addCarta(carta);   
             }
         }
         return true;
@@ -57,6 +60,12 @@ public class Monstro {
         }
     }
     
+    public void monstroDerrotado(Carta carta) {
+    	if(mao.getMao().get(carta) != null){
+    		monstrosMortos.addCarta(mao.remover(carta));
+    	}
+    }
+    
     public Carta consultarMao(int index){
         if(mao.consultarIndice(index) != null){
             return mao.consultarIndice(index);
@@ -64,6 +73,13 @@ public class Monstro {
         return null;
     }
     
+    public int numMonstrosMortos() {
+    	int cont = 0;
+    	while(cont < monstrosMortos.getCartas().getTop()) {
+    		cont++;
+    	}
+    	return cont;
+    }
     
     public Baralho getBaralhoMonstro() {
 		return baralhoMonstro;
@@ -97,7 +113,7 @@ public class Monstro {
     public String toString() {
         return "Informações Monstros:\n"
 				+ "--------------------------------------------------------------"
-				+ "\nCartas em campo:\n" + mao + "\nMonteDescartadas:\n" + monstrosMortos
+				+ "\nCartas em campo:\n" + mao.toString() + "\nMonteDescartadas:\n" + monstrosMortos
 				+ "\nBaralho:\n" + baralhoMonstro + "";
 	
     }

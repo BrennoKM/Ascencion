@@ -7,6 +7,6 @@ public interface MyStackInterface<T> {
     T search(int index);
     boolean isEmpty();
     boolean isFull();
-    void show();
+    Object[] show();
     int size();
 }

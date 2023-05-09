@@ -8,47 +8,48 @@ import estruturadedados.MyStack;
 
 public class Baralho {
 	
-    private MyArrayList<Carta> cartas;
-   
+    private MyStack<Carta> cartas;
+    private Naipe naipe;
+    
     public Baralho(){
-        this.cartas = new MyArrayList<>();
+        this.cartas = new MyStack<>(52);
         for (Naipe naipe : Naipe.values()) {
             for (Valor valor : Valor.values()) {
-                this.cartas.add(new Carta(naipe, valor));
+                this.cartas.push(new Carta(naipe, valor));
             }
         }
     }
     
     public Baralho(Naipe naipe) {
-    	this.cartas = new MyArrayList<>();
-        this.cartas.clear();
+    	this.cartas = new MyStack<>(13);
+    	this.naipe = naipe;
         for (Valor valor : Valor.values()) {
-            this.cartas.add(new Carta(naipe, valor));
+            this.cartas.push(new Carta(naipe, valor));
         }
     }
     
     public void addBaralho(Baralho baralho) {
     if (baralho != null) {
-        for (Carta carta : baralho.getCartas()) {
-            addCarta(carta);
-        }
+    	for (int i = 0; i < cartas.size(); i++) {
+             addCarta(cartas.pop());
+         }
     }
 }
     
     public void shuffle(){
-        cartas.shuffle();
+    	cartas.shuffle();
     }
     
-    public MyArrayList<Carta> getCartas() {
+    public MyStack<Carta> getCartas() {
 		return cartas;
     }
     
-    public void setCartas(MyArrayList<Carta> cartas) {
+    public void setCartas(MyStack<Carta> cartas) {
 		this.cartas = cartas;
     }
     
     public void addCarta(Carta carta) {
-    	cartas.add(carta);
+    	cartas.push(carta);
     }
     
     public void addCartas(MyArrayList<Carta> cartas) {
@@ -59,24 +60,38 @@ public class Baralho {
     
     public void addCartas(MyStack<Carta> cartas) {
     	 for (int i = 0; i < cartas.size(); i++) {
-         	System.out.println(cartas.peek());
              addCarta(cartas.pop());
          }
     }
     
-    public void removeCarta(Carta removida) {
+    /*public void removeCarta(Carta removida) {
     	if (removida != null) {
     		cartas.remove(removida);
     	}
+    }*/
+    
+    public Naipe getNaipeEnum() {
+        return naipe;
     }
     
     public void limparBaralho() {
-    	cartas.clear();
+    	for(int i = 0; i < cartas.size(); i++) {
+        	cartas.pop();
+    	}
     }
     
     public Carta distribuirCarta() {
         if (!this.cartas.isEmpty()) {
-        	return this.cartas.remove(0);
+        	Carta carta = cartas.pop();
+        	return carta;
+        }
+        return null;
+    }
+    
+    public Carta distribuirCarta(int indice) {
+        if (!this.cartas.isEmpty()) {
+        	Carta carta = cartas.pop();
+        	return carta;
         }
         return null;
     }
@@ -86,10 +101,7 @@ public class Baralho {
     }
     
     public String toString() {
-    	String str = "";
-    	int i = 0;
-    	for (Carta c: cartas)
-    		str += c.toString() + "\n";
+    	String str = cartas.toString();
     	return str;
     }
     

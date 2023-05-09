@@ -1,8 +1,5 @@
 package Model.Entity;
 
-import main.java.ufersa.edu.br.ascension.model.enums.Enums.Naipe;
-import main.java.ufersa.edu.br.ascension.model.enums.Enums.Valor;
-
 public class Enums {
 	public enum Naipe implements Comparable<Naipe> {
 		ESPADAS("Assassinos"), COPAS("Paladinos"), OUROS("Magos"), PAUS("Guerreiros");

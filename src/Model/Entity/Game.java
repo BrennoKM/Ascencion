@@ -99,15 +99,24 @@ public class Game {
 	    }
 		*/
 		
+		/* Testes
 		Monstro monster = new Monstro();
+		System.out.println("monstroo");
+		monster.removerDeuses();
 		monster.getBaralhoMonstro().shuffle();
 		monster.sacarCartas();
 		div();
-		System.out.println(monster.toString());
+		System.out.println(monster);
+		div();
+		System.out.println("\nmao::\n" + monster.getMao());
+		System.out.println("~~~~");
+		div();
+		monster.monstroDerrotado(2);
+		System.out.println("Mãoo::\n" + monster.getMao());
+		System.out.println("derrotados:\n" + monster.getMonstrosMortos());
 		monster.sacarCartas();
-		div();
-		System.out.println(monster.getMao());
-		div();
+		System.out.println("\nbaralho:2:\n" + monster.getBaralhoMonstro());
+		System.out.println("mao211:\n" + monster.getMao());*/
 		   
 		Baralho baralho = new Baralho();
 		
@@ -177,7 +186,9 @@ public class Game {
 			
 			System.out.print("Herois escolhidos: " + heroi.getNaipe() + " e " + heroi2.getNaipe() + "\n");
 	        
-			Baralho baralhoJogador = new Baralho();
+			/* Essa parte do código é pra caso um só jogador queira dois naipes
+			 Baralho baralhoJogador = new Baralho();
+			 
 			baralhoJogador.limparBaralho();
 			
 			for (Carta carta : baralho.getCartas()) {
@@ -192,16 +203,65 @@ public class Game {
 			
 			baralhoJogador.shuffle();
 			
-			Jogador jogador = new Jogador(name, heroi); // Jogador criado
+			Jogador jogador = new Jogador(name, heroi);
 			jogador.setBaralhoClasse(baralhoJogador);
+			*/
+			
+			Jogador jogador = new Jogador(name, heroi); // Jogador criado
+			jogador.getBaralhoClasse().shuffle();
 			jogador.getBaralhoVida().shuffle();
 			
-			jogador.sacarCartas();
-			System.out.print(jogador.toString());
+			System.out.print(jogador);
+			
 			
 			jogador.sacarCartas();
 			System.out.println(jogador.getMao());
+			
+			Jogador jogador2 = new Jogador(name, heroi2);
+			jogador2.getBaralhoClasse().shuffle();
+			jogador2.getBaralhoVida().shuffle();
+			
+			jogador2.sacarCartas();
+			System.out.println(jogador2);
+			
+			/* testes
+			jogador2.usarCarta(2);
+			System.out.println(jogador2.getMao());
+			jogador2.sacarCartas();
+			System.out.println(jogador2.getMao());
+			System.out.println("descartadas:\n" + jogador2.getBaralhoDescarte());
+			*/
+			
+			Mesa mesa = new Mesa(jogador, jogador2);
 		
+			mesa.exibirMesa();
+			//mesa.ataqueTodosMonstros();
+			System.out.println("----------------monstro------------------");
+			System.out.println(mesa.getMonster().getMao());
+			System.out.println("---------------jogadores------------------");
+			System.out.println("Descarte j1:\n" + mesa.getJogadores()[0].getBaralhoDescarte());
+			System.out.println("Mão j1:\n" + mesa.getJogadores()[0].getMao());
+			System.out.println("-------------------j----------------------");
+			System.out.println("Descarte j2:\n" + mesa.getJogadores()[1].getBaralhoDescarte());
+			System.out.println("Mão j2:\n" + mesa.getJogadores()[1].getMao());
+			System.out.println("wdawdawd");
+			
+			jogador.sofrerDano();
+			jogador.sacarCartas();
+			jogador.usarCarta(1);
+			jogador.usarCarta(2);
+			jogador.sofrerDano();
+			jogador.sofrerDano();
+			jogador.toString();
+
+			jogador.curarDoDescarte(jogador.getNaipeEnum());
+
+			jogador.curarDoDescarte(jogador.getNaipeEnum());
+
+			jogador.curarDoDescarte(jogador.getNaipeEnum());
+			System.out.println(jogador);
+			System.out.println("wdawdawd");
+			
 	}
 	
 	public static void div() {

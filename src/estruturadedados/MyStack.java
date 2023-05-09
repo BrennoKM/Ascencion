@@ -1,8 +1,9 @@
 package estruturadedados;
 
 import java.util.Random;
+import java.util.Stack;
 
-public class MyStack<T> implements MyStackInterface<T>{
+public class MyStack<T> implements MyStackInterface<T> {
     int size;
     private Object[] array = null;
     int top;
@@ -24,15 +25,15 @@ public class MyStack<T> implements MyStackInterface<T>{
     }
 
     @SuppressWarnings("unchecked")
-    @Override
     public T pop() {
         T retorno;
-		
+        
 	    if(isEmpty()) {
 	        throw new MyStackException( "\nERRO: pilha vazia!!!\n" );
 	    }
 
         retorno = (T) array[top];
+        array[top] = "slot vazio";
         top = top - 1;
 
 	    return retorno;
@@ -41,7 +42,7 @@ public class MyStack<T> implements MyStackInterface<T>{
     @SuppressWarnings("unchecked")
     public void shuffle(){
         Random rand = new Random();
-        for(int i=size-1;i>0;i--){
+        for(int i=top;i>0;i--){
             int j = rand.nextInt(i+1);
             T temp = (T) array[i];
             array[i] = array[j];
@@ -90,18 +91,35 @@ public class MyStack<T> implements MyStackInterface<T>{
     }
 
     @Override
-    public void show() {
+    public Object[] show() {
         for(int i=0; i <= top; i++) {
-	        System.out.println("posicao " + i + " = " + array[i] + "\n");
+	        System.out.println(array[i]);
 	    }
+        return array;
     }
 
     @Override
     public int size() {
-        return this.size;
+    	int count = 0;
+		for(Object obj : array) {
+			count++;
+		}
+		
+		return count;
     }
    
     public int getTop() {
     	return this.top;
+    }
+    
+    public String toString() {
+    	String str = "";
+		for(Object obj : array) {
+			if (!obj.equals("slot vazio")) {
+				str += obj.toString() + "\n";	
+			}
+		}
+		
+		return str;
     }
 }

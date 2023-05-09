@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T> {
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 52;
     private int size;
     private Object[] elements;
 
@@ -44,7 +44,12 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T> {
     
     @Override
     public int size() {
-        return this.size;
+    	int count = 0;
+		for(Object obj : elements) {
+			count++;
+		}
+		
+		return count;
     }
     
     @Override
