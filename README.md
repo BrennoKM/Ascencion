@@ -68,3 +68,7 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.17+10-LTS-269, mixed mode)
     Cada ataque de mostro de número, o herói perde um ponto de vida, que é uma carta sacada do baralho. Se for bloqueado, então a carta do herói impede que a vida do jogador seja atingida.<br>
     São sacadas mais cartas do baralho de monstros, mas não pode passar de 3 cartas.
     No baralho de herois é sacado cartas até completar 3 de cada (por exemplo, 3 Guerreiros e 3 Paladinos).
+
+### **Fim do jogo:**
+   - Todos os 48 monstros forrem derrotados -> Vitória dos Jogadores!
+   - Os dois heróis chegarem a 0 de vida -> Derrota dos Jogadores...
