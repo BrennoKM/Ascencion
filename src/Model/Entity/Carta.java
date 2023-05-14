@@ -63,7 +63,15 @@ public class Carta {
     		faceVirada = false;
     	}
     	if(faceVirada) {
-    		texto += naipe.getNaipe() + " valor " + valor.getValorString();	
+    		texto += "___________\n"
+    				+"| "+valor.getValorString()+"        |\n"
+    				+"|          |\n"
+    				+"|          |\n"
+    				+"|"+naipe.getNaipe()+"|\n"
+    				+"|          |\n"
+    				+"|        "+valor.getValorString()+" |\n"
+    				+"|__________|";
+    		//texto += naipe.getNaipe() + " valor " + valor.getValorString();	
     	}
     	else {
     		texto += "Não há carta selecionada";	

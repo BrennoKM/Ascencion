@@ -9,8 +9,7 @@ import estruturadedados.MyStack;
 public class Baralho {
 	
     private MyStack<Carta> cartas;
-    private Naipe naipe;
-    
+   
     public Baralho(){
         this.cartas = new MyStack<>(52);
         for (Naipe naipe : Naipe.values()) {
@@ -22,7 +21,6 @@ public class Baralho {
     
     public Baralho(Naipe naipe) {
     	this.cartas = new MyStack<>(13);
-    	this.naipe = naipe;
         for (Valor valor : Valor.values()) {
             this.cartas.push(new Carta(naipe, valor));
         }
@@ -70,25 +68,19 @@ public class Baralho {
     	}
     }*/
     
-    public Naipe getNaipeEnum() {
-        return naipe;
-    }
-    
     public void limparBaralho() {
     	for(int i = 0; i < cartas.size(); i++) {
-        	cartas.pop();
+        	cartas.pop();	
+    	}
+    }
+    
+    public void zerarBaralho() {
+    	for(int i = 0; i < cartas.getTop() + 1; i++) {
+    		cartas.pop();
     	}
     }
     
     public Carta distribuirCarta() {
-        if (!this.cartas.isEmpty()) {
-        	Carta carta = cartas.pop();
-        	return carta;
-        }
-        return null;
-    }
-    
-    public Carta distribuirCarta(int indice) {
         if (!this.cartas.isEmpty()) {
         	Carta carta = cartas.pop();
         	return carta;

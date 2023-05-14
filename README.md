@@ -9,14 +9,14 @@ Este projeto da disciplina de **Estrutura de Dados I** tem como objetivo desenvo
 
 ## ✅ Checklist
 
-- [ ] Vetor/Matriz
+- [X] Vetor/Matriz
 - [X] Arquivo texto/binário
 - [X] Generic
 - [X] Pilha
 - [X] Fila
-- [ ] Lista encadeada
-- [ ] Busca linear/binária
-- [ ] Ordenação
+- [X] Lista encadeada
+- [X] Busca linear/binária
+- [X] Ordenação
 
 ## 👨🏾‍💻 Participantes
 - Brenno Kevyn Maia de Souza

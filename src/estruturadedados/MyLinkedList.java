@@ -168,7 +168,7 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T>{
 	
 	public T searchIndex(int index) { // Só funciona pro nosso trabalho, pois são 3 cartas
 		index = index % 3;
-		
+
 		switch(index) {
 		case 0:
 			return this.peekFirst();
@@ -190,7 +190,7 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T>{
 	}
 	
 	public T peekMiddle() { // "Middle" só pro nosso trabalho, pois são 3 cartas
-		if(head != null) {
+		if(head != null && head.next != null) {
 			return head.next.valor;
 		} else {
 			return null;

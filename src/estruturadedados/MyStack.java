@@ -1,5 +1,6 @@
 package estruturadedados;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
@@ -59,7 +60,6 @@ public class MyStack<T> implements MyStackInterface<T> {
         return (T) array[top-index];
     }
 
-
     @SuppressWarnings("unchecked")
     @Override
     public T peek() {
@@ -107,6 +107,10 @@ public class MyStack<T> implements MyStackInterface<T> {
 		
 		return count;
     }
+    
+    public int sizeFix() {
+    	return size;
+    }
    
     public int getTop() {
     	return this.top;
@@ -115,9 +119,11 @@ public class MyStack<T> implements MyStackInterface<T> {
     public String toString() {
     	String str = "";
 		for(Object obj : array) {
-			if (!obj.equals("slot vazio")) {
-				str += obj.toString() + "\n";	
-			}
+			if(obj != null) {
+				if (!obj.equals("slot vazio")) {
+					str += obj.toString() + "\n";	
+				}
+			}		
 		}
 		
 		return str;
