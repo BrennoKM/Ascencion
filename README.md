@@ -68,10 +68,3 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.17+10-LTS-269, mixed mode)
     Cada ataque de mostro de número, o herói perde um ponto de vida, que é uma carta sacada do baralho. Se for bloqueado, então a carta do herói impede que a vida do jogador seja atingida.<br>
     São sacadas mais cartas do baralho de monstros, mas não pode passar de 3 cartas.
     No baralho de herois é sacado cartas até completar 3 de cada (por exemplo, 3 Guerreiros e 3 Paladinos).
- 
-### **Hablidades de cada classe de heróis:**
-- ⚔ **Guerreiro:** Unica classe de todas que pode usar cartas de vidas para também atacar.
-- 🗡 **Paladinos:** Habilidade de cura. Cada vez que derrota um inimigo ele tem a opção de curar todas as cartas de feridas.
-- 🔪 **Assassinos:** Habilidade especial de assassinar. Escolhe duas cartas para poder derrotar qualquer inimigo com qualquer posição e valor, incluindo na área de não bloqueáveis.
-- ✨ **Magos:** Pode atacar duas vezes na rodada dos heróis. Existe uma regra específica, sendo que uma das cartas vai atingir os monstros da linha principal e a outra só pode atingir os mostros da linha de não bloqueáveis.<br>  
-Na medida que o jogo vai progredindo, vamos acumulando cartas de feridas e elas vão fazer parte do baralho de heróis.
