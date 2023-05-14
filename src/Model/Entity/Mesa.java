@@ -98,36 +98,6 @@ public class Mesa {
 		monstro.sacarCartas();
 	}
 	
-	/*public Carta ataqueAoMonstro(Jogador jogador) {
-		MyLinkedList<Carta> playerAux = jogador.getMao().getMao();
-		MyLinkedList<Carta> monsterAux = monstro.getMao().getMao();
-		Carta ataque = null;
-		for(int i = 0; i < playerAux.size(); i++) {
-			if(playerAux.searchIndex(i).getNaipe() == monsterAux.searchIndex(i).getNaipe()) { // talvez .getNaipeEnhum() ?
-				// se for do mesmo naipe, entra aqui
-				if(playerAux.searchIndex(i).getCor().equals(monsterAux.searchIndex(i).getCor())) {
-					// se mesmo naipe e mesmo valor
-					ataque = playerAux.searchIndex(i);
-				} else {
-					// se mesmo naipe
-					ataque = playerAux.searchIndex(i);
-				}
-					
-			} else {
-				// se não for do mesmo naipe, entra aqui
-				if(playerAux.searchIndex(i).getCor().equals(monsterAux.searchIndex(i).getCor())) {
-					// se mesmo valor / numero da carta
-					ataque = playerAux.searchIndex(i);
-				} else {
-					// se nenhum dos dois
-					ataque = playerAux.searchIndex(i);
-				}
-				
-			}
-		}
-		return ataque;
-	}*/
-	
 	public boolean ataque(Carta cartaAtacante, Carta cartaDefensor) {
 		if(cartaAtacante.getValor() > cartaDefensor.getValor()) {
 			monstro.monstroDerrotado(cartaDefensor);
@@ -162,28 +132,48 @@ public class Mesa {
 	}
 	
 	public boolean ataqueAosJogadores(Carta monstroAtacante) {
+		Carta defensor;
 		for (Jogador jogador : jogadores) {
 			if(monstroAtacante.getNaipe().equals(jogador.getNaipe()) && jogador.possuiVida()) {
 				// se for mesmo NAIPE do jogador
-				// no "peekMiddle()", os monstros estão direcionando seu ataque à carta do meio da mão do jogador
-				defenderAtaque(monstroAtacante, jogador.getMao().getMao().peekMiddle()); // AQUI, AO INVÉS DE "peekMiddle()", o usuário que vai escolher a defesa
+				defensor = escolherDefensor(jogador);
+				if(defenderAtaque(monstroAtacante, defensor)) {
+					System.out.println("Defendido com sucesso!");
+				} else {
+					System.out.println("Falha na defesa...");
+				}
 				//ataqueMonstro(monstroAtacante, jogador);
 				return true;
 			} else {
 				// se não for do mesmo NAIPE
 				if(monstroAtacante.getCor().equals(jogador.getCor()) && jogador.possuiVida()) {
 					// se for da mesma COR do jogador
-					defenderAtaque(monstroAtacante, jogador.getMao().getMao().peekMiddle()); // AQUI, AO INVÉS DE "peekMiddle()", o usuário que vai escolher a defesa
+					defensor = escolherDefensor(jogador);
+					if(defenderAtaque(monstroAtacante, defensor)) {
+						System.out.println("Defendido com sucesso!");
+					} else {
+						System.out.println("Falha na defesa...");
+					}
 					//ataqueMonstro(monstroAtacante, jogador);
 					return true;
 				} 
 			}
 		}
 		if(jogadores[P1].possuiVida()) { // se nenhum dos dois tiver naipe ou cor igual, o monstro ataca o que tiver vida
-			defenderAtaque(monstroAtacante, jogadores[P1].getMao().getMao().peekMiddle());
+			defensor = escolherDefensor(jogadores[P1]);
+			if(defenderAtaque(monstroAtacante, defensor)) {
+				System.out.println("Defendido com sucesso!");
+			} else {
+				System.out.println("Falha na defesa...");
+			}
 			return true;
 		} else {
-			defenderAtaque(monstroAtacante, jogadores[P2].getMao().getMao().peekMiddle());
+			defensor = escolherDefensor(jogadores[P2]);
+			if(defenderAtaque(monstroAtacante, defensor)) {
+				System.out.println("Defendido com sucesso!");
+			} else {
+				System.out.println("Falha na defesa...");
+			}
 			return true;
 		}
 	}
@@ -222,6 +212,37 @@ public class Mesa {
 				return false;
 			}
 		}
+	}
+	
+	public Carta escolherDefensor(Jogador jog) {
+		Carta defensor = null;
+		Scanner scan = new Scanner(System.in);
+		System.out.println("---------------------------------");
+		System.out.println("Monstro quer atacar " + jog.getNome() + "! Defender!!!");
+		System.out.println("[P]rimeira	[S]egunda	[T]erceira	[N]enhuma:");
+		System.out.print("Opção: ");
+		char opc = scan.next().charAt(0);
+		switch(opc) {
+		case 'P': 
+		case 'p':
+		case '1':
+			defensor = jog.getMao().getMao().peekFirst();
+			break;
+		case 'S': 
+		case 's':
+		case '2':
+			defensor = jog.getMao().getMao().peekMiddle();
+			break;
+		case 'T': 
+		case 't':
+		case '3':
+			defensor = jog.getMao().getMao().peekLast();
+			break;
+		default:
+			System.out.println("Pulou turno!");
+		}
+		
+		return defensor;
 	}
 	
 	public Jogador reconhecerJogador(Carta carta) {

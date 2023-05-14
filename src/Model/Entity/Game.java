@@ -13,7 +13,7 @@ public class Game {
 	
 	public static Scanner scanner = new Scanner(System.in);
 
-	public static void main(String []args) {
+	public static void main(String []args) throws Exception {
 		
 		String caminhoRyan = "C:\\Users\\Ryan\\eclipse-workspace-projects\\Ascencion\\src\\Database\\usuarios.txt";
 		Usuario usuarios[] = null;
@@ -116,7 +116,7 @@ public class Game {
 		return jogador;
 	}
 	
-	public static Usuario conexao(String caminho, Usuario[] usuarios) {
+	public static Usuario conexao(String caminho, Usuario[] usuarios) throws Exception {
 	    int opcao;
 	    String nome,senha;
 
@@ -143,7 +143,7 @@ public class Game {
 	         	        System.out.println("Login realizado com sucesso. Dados do jogador:");
 	         	        UsuarioService.exibirPainelDeUsuario(jogador);
 	         	    } else {
-	         	        System.out.println("Não foi possível fazer o login. Verifique as informações de login e senha.");
+	         	    	throw new Exception("Não foi possível fazer o login. Verifique as informações de login e senha.");
 	         	    }
 	                break;
 	            case 2:

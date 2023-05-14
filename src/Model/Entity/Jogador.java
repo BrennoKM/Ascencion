@@ -49,7 +49,9 @@ public class Jogador {
     	if(mao.getMao().get(carta) != null){
     		Carta derrotado = mao.remover(carta);
     		baralhoDescarte.addCarta(derrotado);
+    		System.out.println("---------------------------------");
     		System.out.println("Jogadores: " + derrotado.getValorEnum() + " de " + derrotado.getNaipe() + " derrotado");
+    		System.out.println("---------------------------------");
     	}
     }
     
@@ -57,6 +59,9 @@ public class Jogador {
         Carta carta = baralhoVida.distribuirCarta();
         if(carta != null){
             baralhoDescarte.addCarta(carta);
+            System.out.println("---------------------------------");
+            System.out.println(nome + ": -1 de carta de Vida.");
+            System.out.println("---------------------------------");
             return true;
         }
         return false;

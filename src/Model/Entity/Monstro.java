@@ -64,7 +64,9 @@ public class Monstro {
     	if(mao.getMao().get(carta) != null){
     		Carta derrotado = mao.remover(carta);
     		monstrosMortos.addCarta(derrotado);
+    		System.out.println("---------------------------------");
     		System.out.println("Monstro: " + derrotado.getValorEnum() + " de " + derrotado.getNaipe() + " derrotado");
+    		System.out.println("---------------------------------");
     	}
     }
     
