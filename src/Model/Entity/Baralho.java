@@ -70,7 +70,13 @@ public class Baralho {
     
     public void limparBaralho() {
     	for(int i = 0; i < cartas.size(); i++) {
-        	cartas.pop();
+        	cartas.pop();	
+    	}
+    }
+    
+    public void zerarBaralho() {
+    	for(int i = 0; i < cartas.getTop() + 1; i++) {
+    		cartas.pop();
     	}
     }
     

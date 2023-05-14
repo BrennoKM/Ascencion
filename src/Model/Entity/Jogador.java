@@ -33,7 +33,7 @@ public class Jogador {
             if(baralhoClasse.verificarVazio()){
                 baralhoClasse.setCartas(baralhoDescarte.getCartas());
                 baralhoClasse.shuffle();
-                baralhoDescarte.limparBaralho();
+                baralhoDescarte.zerarBaralho();
             }
             mao.addCarta(baralhoClasse.distribuirCarta());
         }
@@ -47,7 +47,9 @@ public class Jogador {
     
     public void heroiDerrotado(Carta carta) {
     	if(mao.getMao().get(carta) != null){
-    		baralhoDescarte.addCarta(mao.remover(carta));
+    		Carta derrotado = mao.remover(carta);
+    		baralhoDescarte.addCarta(derrotado);
+    		System.out.println("Jogadores: " + derrotado.getValorEnum() + " de " + derrotado.getNaipe() + " derrotado");
     	}
     }
     
@@ -66,6 +68,21 @@ public class Jogador {
         }
         return null;
     }
+    
+    public int contarVidas() {
+    	int vidas = 0;
+    	for(int i = 0; i < baralhoVida.getCartas().getTop() + 1; i++){
+    		vidas++;
+    	}
+    	return vidas;
+    }
+    
+	public boolean possuiVida() {
+		if(baralhoVida.verificarVazio()) {
+			return false;
+		}
+		return true;
+	}
     
     public void mostrarBaralho(){
         baralhoClasse.toString();

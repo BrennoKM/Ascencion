@@ -62,7 +62,9 @@ public class Monstro {
     
     public void monstroDerrotado(Carta carta) {
     	if(mao.getMao().get(carta) != null){
-    		monstrosMortos.addCarta(mao.remover(carta));
+    		Carta derrotado = mao.remover(carta);
+    		monstrosMortos.addCarta(derrotado);
+    		System.out.println("Monstro: " + derrotado.getValorEnum() + " de " + derrotado.getNaipe() + " derrotado");
     	}
     }
     
@@ -75,7 +77,7 @@ public class Monstro {
     
     public int numMonstrosMortos() {
     	int cont = 0;
-    	while(cont < monstrosMortos.getCartas().getTop()) {
+    	while(cont < monstrosMortos.getCartas().getTop() + 1) {
     		cont++;
     	}
     	return cont;

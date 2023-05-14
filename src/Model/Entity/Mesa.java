@@ -2,7 +2,11 @@ package Model.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import Model.Entity.Enums.Naipe;
+import estruturadedados.BuscaBinaria;
+import estruturadedados.BuscaLinear;
 import estruturadedados.Fila;
 import estruturadedados.MyArrayList;
 import estruturadedados.MyLinkedList;
@@ -17,6 +21,7 @@ public class Mesa {
 		this.jogadores = new Jogador[2];
 		this.jogadores[P1] = jogador1;
 		this.jogadores[P2] = jogador2;
+		
 		/*if (jogador3 != null) {
 			this.jogadores.add(jogador3);
 		}
@@ -39,7 +44,61 @@ public class Mesa {
 		System.out.println("Cartas descartadas: " + monstro.numMonstrosMortos());
 	}
 	
-	public Carta ataqueAoMonstro(Jogador jogador) {
+	public void exibirCartas() {
+		System.out.println("-------------MONSTRO-------------");
+		System.out.println(monstro.getMao().toString());
+		System.out.println("------------JOGADOR-1------------");
+		System.out.println(jogadores[P1].getMao());
+		System.out.println("------------JOGADOR-2------------");
+		System.out.println(jogadores[P2].getMao());
+	}
+	
+	public void exibirCemiterio() {
+		System.out.println("--------------------------CEMITÉRIO--------------------------");
+		System.out.println("		  	    _______	  \r\n"
+				+ "		  _____    /       \\    _____\r\n"
+				+ "		 /     \\  |  R.I.P  |  /     \\\r\n"
+				+ "		| R.I.P | |         | | R.I.P |\r\n"
+				+ "		|  ___  | |   ___   | |  ___  |\r\n"
+				+ "		| /   \\ | |  /   \\  | | /   \\ | ");
+		System.out.println("-------------MONSTRO-------------");
+		System.out.println(monstro.getMonstrosMortos());
+		System.out.println("------------JOGADOR-1------------");
+		System.out.println(jogadores[P1].getBaralhoDescarte());
+		System.out.println("------------JOGADOR-2------------");
+		System.out.println(jogadores[P2].getBaralhoDescarte());
+	}
+	
+	public void exibirVidas() {
+		System.out.println("----------------------------VIDAS----------------------------");
+		System.out.println("		    ___  ___      ___  ___\r\n"
+				+ "		   /   \\/   \\    /   \\/   \\\r\n"
+				+ "		   \\        /    \\        /\r\n"
+				+ "		    '\\    /'	  '\\    /'\r\n"
+				+ "		      '\\/'	    '\\/'   ");
+		System.out.println("Vidas de " + jogadores[P1].getNome() + ": " + jogadores[P1].contarVidas());
+		System.out.println("Vidas de " + jogadores[P2].getNome() + ": " + jogadores[P2].contarVidas());
+	}
+	
+	public void exibirJogadores() {
+		MyArrayList myArr = new MyArrayList();
+		myArr.add(jogadores[P1]);
+		myArr.add(jogadores[P2]);
+		BuscaLinear busca = new BuscaLinear();
+		
+		Jogador exib = jogadores[busca.buscar(myArr, jogadores[P1])];
+		System.out.println(exib);
+		exib = jogadores[busca.buscar(myArr, jogadores[P2])];
+		System.out.println(exib);
+	}
+	
+	public void saqueDeCartas() {
+		jogadores[P1].sacarCartas();
+		jogadores[P2].sacarCartas();
+		monstro.sacarCartas();
+	}
+	
+	/*public Carta ataqueAoMonstro(Jogador jogador) {
 		MyLinkedList<Carta> playerAux = jogador.getMao().getMao();
 		MyLinkedList<Carta> monsterAux = monstro.getMao().getMao();
 		Carta ataque = null;
@@ -67,16 +126,28 @@ public class Mesa {
 			}
 		}
 		return ataque;
-	}
+	}*/
 	
 	public boolean ataque(Carta cartaAtacante, Carta cartaDefensor) {
 		if(cartaAtacante.getValor() > cartaDefensor.getValor()) {
-			return true;  // se for maior o ataque deu certo
-		} 
-		if(cartaAtacante.getValor() == cartaDefensor.getValor()) {
-			return false; // se for igual, retorna falso pra ter outro tipo de condição
+			monstro.monstroDerrotado(cartaDefensor);
+			return true;
+		} else {
+			if(cartaAtacante.getValor() == cartaDefensor.getValor()) {
+				monstro.monstroDerrotado(cartaDefensor);
+				int i = 0;
+				for(Jogador jogador : jogadores) {
+					jogadores[i++].heroiDerrotado(cartaAtacante); // tenta remover dos dois, mas só um deles tem
+				}
+				return true;
+			} else {
+				int i = 0;
+				for(Jogador jogador : jogadores) {
+					jogadores[i++].heroiDerrotado(cartaAtacante); // tenta remover dos dois, mas só um deles tem
+				}
+				return false;
+			}
 		}
-		return false;
 	}
 	
 	public boolean ataqueMonstro(Carta cartaAtacante, Jogador jogador) {
@@ -92,7 +163,7 @@ public class Mesa {
 	
 	public boolean ataqueAosJogadores(Carta monstroAtacante) {
 		for (Jogador jogador : jogadores) {
-			if(monstroAtacante.getNaipe().equals(jogador.getNaipe())) {
+			if(monstroAtacante.getNaipe().equals(jogador.getNaipe()) && jogador.possuiVida()) {
 				// se for mesmo NAIPE do jogador
 				// no "peekMiddle()", os monstros estão direcionando seu ataque à carta do meio da mão do jogador
 				defenderAtaque(monstroAtacante, jogador.getMao().getMao().peekMiddle()); // AQUI, AO INVÉS DE "peekMiddle()", o usuário que vai escolher a defesa
@@ -100,7 +171,7 @@ public class Mesa {
 				return true;
 			} else {
 				// se não for do mesmo NAIPE
-				if(monstroAtacante.getCor().equals(jogador.getCor())) {
+				if(monstroAtacante.getCor().equals(jogador.getCor()) && jogador.possuiVida()) {
 					// se for da mesma COR do jogador
 					defenderAtaque(monstroAtacante, jogador.getMao().getMao().peekMiddle()); // AQUI, AO INVÉS DE "peekMiddle()", o usuário que vai escolher a defesa
 					//ataqueMonstro(monstroAtacante, jogador);
@@ -108,8 +179,13 @@ public class Mesa {
 				} 
 			}
 		}
-		jogadores[P1].sofrerDano(); // se nenhum dos dois tiver naipe ou cor igual, o monstro ataca o jogador 1 mesmo
-		return true;
+		if(jogadores[P1].possuiVida()) { // se nenhum dos dois tiver naipe ou cor igual, o monstro ataca o que tiver vida
+			defenderAtaque(monstroAtacante, jogadores[P1].getMao().getMao().peekMiddle());
+			return true;
+		} else {
+			defenderAtaque(monstroAtacante, jogadores[P2].getMao().getMao().peekMiddle());
+			return true;
+		}
 	}
 	
 	public void ataqueTodosMonstros() {
@@ -120,12 +196,17 @@ public class Mesa {
 		}
 		
 		for(int i = 0; i < ordem.size(); i++) {
-			ataqueAosJogadores(ordem.remove()); // ataca com o próximo da fila e remove-o da fila de ataque
+			if(ordem.peek() != null) {
+				ataqueAosJogadores(ordem.remove()); // ataca com o próximo da fila e remove-o da fila de ataque
+			}
 		}
 		
 	}
 	
 	public boolean defenderAtaque(Carta atacante, Carta defensor) {
+		if(defensor == null) {
+			return false;
+		}
 		if(defensor.getValor() > atacante.getValor()) {
 			return true;
 		} else {
@@ -154,6 +235,86 @@ public class Mesa {
 			}
 		}
 		return pertence;
+	}
+	
+	public String ataqueDoJogador(Jogador jogador) {
+		Carta escolhidaMonstro = null, escolhidaJogador = null;
+		Scanner scan = new Scanner(System.in);
+		System.out.println("-------------ATACAR!-------------");
+		System.out.println("Jogador: " + jogador.getNome());
+		System.out.println("--------escolha-SUA-carta--------");
+		System.out.println("[P]rimeira	[S]egunda	[T]erceira	[N]enhuma:");
+		System.out.print("Opção: ");
+		char opcJogador = scan.next().charAt(0);
+		switch(opcJogador) {
+		case 'P': 
+		case 'p':
+		case '1':
+			escolhidaJogador = jogador.getMao().getMao().peekFirst();
+			break;
+		case 'S': 
+		case 's':
+		case '2':
+			escolhidaJogador = jogador.getMao().getMao().peekMiddle();
+			break;
+		case 'T': 
+		case 't':
+		case '3':
+			escolhidaJogador = jogador.getMao().getMao().peekLast();
+			break;
+		default:
+			System.out.println("Pulou turno!");
+		}
+		
+		
+		System.out.println("-------------ATACAR!-------------");
+		System.out.println("---escolha-a-carta-do-MONSTRO----");
+		System.out.println("[P]rimeira	[S]egunda	[T]erceira	[N]enhuma:");
+		System.out.print("Opção: ");
+		char opcMonstro = scan.next().charAt(0);
+		switch(opcMonstro) {
+		case 'P': 
+		case 'p':
+		case '1':
+			escolhidaMonstro = monstro.getMao().getMao().peekFirst();
+			break;
+		case 'S': 
+		case 's':
+		case '2':
+			escolhidaMonstro = monstro.getMao().getMao().peekMiddle();
+			break;
+		case 'T': 
+		case 't':
+		case '3':
+			escolhidaMonstro = monstro.getMao().getMao().peekLast();
+			break;
+		default:
+			System.out.println("Pulou turno!");
+		}
+		
+		if(escolhidaMonstro == null) {
+			return "Monstros exterminados!";
+		}
+		if(escolhidaJogador == null) {
+			return "Heróis exterminados...";
+		}
+		if(ataque(escolhidaJogador, escolhidaMonstro)) {
+			return "Ataque bem sucedido!";
+		}
+		
+		return "Ataque falhou!";
+	}
+	
+	public boolean jogadoresGanharam() {
+		if(monstro.numMonstrosMortos() >= 48) {
+			return true;
+		} else return false;
+	}
+	
+	public boolean monstrosGanharam() {
+		if(jogadores[P1].possuiVida() || jogadores[P2].possuiVida()) {
+			return false;
+		} else return true;
 	}
 
 	// getters e setters
