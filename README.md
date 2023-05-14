@@ -14,7 +14,7 @@ Este projeto da disciplina de **Estrutura de Dados I** tem como objetivo desenvo
 - [X] Generic -> Em todas estruturas de dados (MyStack, Fila, MyArrayList, etc)
 - [X] Pilha -> Para os baralhos de carta, em Baralho.java
 - [X] Fila -> Para o ataque de todos os monstros, em Mesa.java na função de AtaqueTodosMonstros()
-- [X] Lista encadeada -> Para as cartas nas maos dos jogadores e monstros, em MaoJogador e MaoMonstro
+- [X] Lista encadeada -> Para as cartas nas mãos dos jogadores e monstros, em MaoJogador e MaoMonstro
 - [X] Busca linear/binária -> Para exibição dos jogadores, em Mesa.java na função de exibirJogadores()
 - [X] Ordenação -> Para exibição dos heróis restantes, em Game.java ao final do método main
 
@@ -70,5 +70,5 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.17+10-LTS-269, mixed mode)
     No baralho de herois é sacado cartas até completar 3 de cada (por exemplo, 3 Guerreiros e 3 Paladinos).
 
 ### **Fim do jogo:**
-   - Todos os 48 monstros forrem derrotados -> Vitória dos Jogadores!
-   - Os dois heróis chegarem a 0 de vida -> Derrota dos Jogadores...
+   - Todos os 48 monstros forrem derrotados -> 🏆 Vitória dos Jogadores! 🏆
+   - Os dois heróis chegarem a 0 de vida -> ☠️ Derrota dos Jogadores... ☠️
