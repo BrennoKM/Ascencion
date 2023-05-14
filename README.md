@@ -9,14 +9,14 @@ Este projeto da disciplina de **Estrutura de Dados I** tem como objetivo desenvo
 
 ## ✅ Checklist
 
-- [X] Vetor/Matriz
-- [X] Arquivo texto/binário
-- [X] Generic
-- [X] Pilha
-- [X] Fila
-- [X] Lista encadeada
-- [X] Busca linear/binária
-- [X] Ordenação
+- [X] Vetor/Matriz -> Em todas estruturas de dados e no array de Jogadores em Mesa.java
+- [X] Arquivo texto/binário -> Sistema de cadastro e login
+- [X] Generic -> Em todas estruturas de dados (MyStack, Fila, MyArrayList, etc)
+- [X] Pilha -> Para os baralhos de carta, em Baralho.java
+- [X] Fila -> Para o ataque de todos os monstros, em Mesa.java na função de AtaqueTodosMonstros()
+- [X] Lista encadeada -> Para as cartas nas maos dos jogadores e monstros, em MaoJogador e MaoMonstro
+- [X] Busca linear/binária -> Para exibição dos jogadores, em Mesa.java na função de exibirJogadores()
+- [X] Ordenação -> Para exibição dos heróis restantes, em Game.java ao final do método main
 
 ## 👨🏾‍💻 Participantes
 - Brenno Kevyn Maia de Souza
@@ -39,7 +39,7 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.17+10-LTS-269, mixed mode)
 - [Scene Builder](https://gluonhq.com/products/scene-builder/)
 
 ## ✏ Descrição:
-<p>O jogo foi originalmente projetado para ser jogado por dois a quatro jogadores, mas na aplicação que estamos desenvolvendo, será possível jogar de forma individual (ou "solo"). Para jogar o jogo em modo solo, o jogador precisará de duas classes de heróis.<br></p>
+<p>O jogo foi originalmente projetado para ser jogado por dois a quatro jogadores, mas na aplicação que estamos desenvolvendo, será possível jogar apenas em dois (ou "duo"). Sendo assim, os jogadores serão apenas um. Se um ganhar, o outro também ganha.<br></p>
 
 ### **Baralho de Monstros:**
 - 1 - Separar as cartas reais (2, 3, 4, 5, 6, 7, 8, 9, 10, Valete, Dama e Rei. Com excessão dos Ás).
@@ -49,25 +49,25 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.17+10-LTS-269, mixed mode)
 ### ***Baralho de Heróis:*** 
 - 1 - Dessa vez os Ás fazem parte do baralho. 
 - 2 - Dividimos entre 4 classes separadas por naipes (Símbolos).<br>
-    Naipe de Paus ♣: representa a classe dos Guerreiros.<br>
-    Naipe de Copas ♥: representa a classe dos Paladinos.<br>
-    Naipe de Espadas ♠: representa a classe dos Assassinos.<br>
-    Naipe de Outros ♦: representa a classe dos Magos.<br>
+    Naipe de Paus ♣: representa a classe dos Guerreiros. ⚔<br>
+    Naipe de Copas ♥: representa a classe dos Paladinos. 🗡<br>
+    Naipe de Espadas ♠: representa a classe dos Assassinos. 🔪<br>
+    Naipe de Outros ♦: representa a classe dos Magos. ✨<br>
 - 3 - Cada jogador deve escolher uma classe (Guerreiros, Paladinos, Assassinos ou Magos). Porém, como o jogo sera realizado em modo solo, então vamos escolher duas classes (exemplo: Guerreiros e Assassinos).
-- 4 - O Naipe que sobrar de cor oposta pode ser usado para representar os pontos de vida de cada Herói. Como escolhemos os Guerreiros e os Assassinos, então os naipes de copas vão ser utilizados como pontos de vida dos Guerreiros e o outro naipe sera utilizado como ponto de vida dos Assassinos.
+- 4 - O Naipe que sobrar de cor oposta pode ser usado para representar os pontos de vida de cada Herói. Como escolhemos os Guerreiros e os Paladinos, então os naipes de Magos vão ser utilizados como pontos de vida dos Guerreiros e o naipe de Assassinos será utilizado como ponto de vida dos Paladinos.
 ### **Descrição dos Turnos:**
 - **Primeira Fase:**<br>
-  Sacamos 4 cartas do baralho de monstros e sacamos 3 cartas para cada herói. Temos a opçãoç de descartar uma carta para cada herói, com a finalidade de fortalecer nosso deck. Assim, podemos descartar cartas de menor valor e colocar na pilha de descartes.
+  Sacamos 3 cartas do baralho de monstros e sacamos 3 cartas para cada herói. O jogador inicia com 13 pontos de vida, simbolizados cada um por cada carta do baralho de vida. Conforme os heróis forem sendo derrotados, suas cartas serão enviadas ao cemitério (baralho de descarte). O mesmo vale para as cartas de vida.
 - **Segunda Fase:**<br>
-    Realizamos os ataques do herói (fazemos um ataque referente a cada herói utilizado. No nosso caso são dois ataques). Agora escolhemos uma carta ou de Guerreiros ou de Assassinos e, se o numero for maior, podemos derrotar qualquer um dos monstros que tenha nivel menor.<br>
-    Se o naipe for o mesmo do monstro (símbolo), então nossa carta é descartada e o monstro é derrotado. Temos a opção de curar as feridas do baralho, usando cartas de vida, ou podemos tirar uma carta que foi eliminada do jogo e essa carta que foi eliminada vai para eliminada do monstro. Ao eliminar as cartas de menor naipe, o seu baralho vai ficando cada vez mais forte.
+    Realizamos os ataques do herói (fazemos um ataque referente a cada herói utilizado. No nosso caso são dois ataques). Agora escolhemos uma carta ou de Guerreiros ou de Paladinos e, se o numero for maior, podemos derrotar qualquer um dos monstros que tenha nivel menor.<br>
+    Se o valor for o mesmo do monstro, então nossa carta é descartada e o monstro é derrotado.
 - **Terceira Fase:**<br>
     É realizado o ataque dos monstros. Cada monstro realiza um ataque referente a cor dele. Por exemplo, a carta de cor vermelha pode atacar uma carta de cor vermelha.<br>
     Caso a cor for a mesma, então devemos decidir quem vai atacar quem. Cada monstro realiza um único ataque por turno e um herói pode bloquear um ataque.
-    Exemplo: um monstro de nível 2 pode ser bloqueddo por uma carta de Ás que o valor é maior, ou se não quiser perder o Ás que é a melhor carta, então podemos receber esse ataque.<br>
-    Cada ataque de mostro de número eu perco um ponto de vida que é uma carta sacada do baralho. Se for bloqueado, então a carta do herói é descartada e o monstro vai para uma segunda linha de cartas(linha de monstros não bloqueáveis(só é possivel bloquear um monstro uma vez).<br>
-    São sacadas mais cartas do baralho de monstros, mas não pode passar de 4 cartas e conta com cartas não bloqueáveis.
-    No baralho de herois é sacado cartas até completar 6 (por exemplo, 3 guerreiros e 3 assassinos).
+    Exemplo: um monstro de nível 2 pode ser bloqueado por uma carta de Ás que o valor é maior, ou se não quiser perder o Ás que é a melhor carta, então podemos receber esse ataque.<br>
+    Cada ataque de mostro de número, o herói perde um ponto de vida, que é uma carta sacada do baralho. Se for bloqueado, então a carta do herói impede que a vida do jogador seja atingida.<br>
+    São sacadas mais cartas do baralho de monstros, mas não pode passar de 3 cartas.
+    No baralho de herois é sacado cartas até completar 3 de cada (por exemplo, 3 Guerreiros e 3 Paladinos).
  
 ### **Hablidades de cada classe de heróis:**
 - ⚔ **Guerreiro:** Unica classe de todas que pode usar cartas de vidas para também atacar.
