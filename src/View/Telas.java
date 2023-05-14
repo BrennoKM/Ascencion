@@ -1,4 +1,4 @@
-package View;
+/*package View;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,4 +36,4 @@ public class Telas extends Application {
 	public static void main (String args[]) {
 		launch(); 
 	}
-}
+}*/

@@ -6,7 +6,6 @@ import Model.DAO.UsuarioDAO;
 import Model.Entity.Enums.Naipe;
 import Model.Entity.Enums.Valor;
 import Model.Service.UsuarioService;
-import View.Telas;
 import estruturadedados.Ordenacao;
 
 public class Game {

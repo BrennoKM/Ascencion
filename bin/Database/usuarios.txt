@@ -68,3 +68,35 @@ heroifavorito=
 
 
 
+id_usuario=10
+login=Hanna
+senha=baker
+vencidas=0
+heroifavorito=
+
+
+
+id_usuario=11
+login=ryancad
+senha=<3
+vencidas=0
+heroifavorito=
+
+
+
+id_usuario=12
+login=<3<3
+senha=<3
+vencidas=0
+heroifavorito=
+
+
+
+id_usuario=13
+login=Melannie
+senha=Rigols
+vencidas=0
+heroifavorito=
+
+
+
