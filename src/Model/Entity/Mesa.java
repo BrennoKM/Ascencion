@@ -100,6 +100,7 @@ public class Mesa {
 	
 	public boolean ataque(Carta cartaAtacante, Carta cartaDefensor) {
 		if(cartaAtacante.getValor() > cartaDefensor.getValor()) {
+<<<<<<< HEAD
 			monstro.monstroDerrotado(cartaDefensor);
 			return true;
 		} else {
@@ -117,8 +118,18 @@ public class Mesa {
 				}
 				return false;
 			}
+=======
+			Jogador j = reconhecerJogador(cartaAtacante);
+			j.curarDoDescarte(j.getNaipeEnum());
+			return true;  // se for maior o ataque deu certo
+		} 
+		if(cartaAtacante.getValor() == cartaDefensor.getValor()) {
+			return false; // se for igual, retorna falso pra ter outro tipo de condição
+>>>>>>> f4465d4f2c3664285e028f97acdb2d5fdf4fe52d
 		}
 	}
+	
+	
 	
 	public boolean ataqueMonstro(Carta cartaAtacante, Jogador jogador) {
 		// monstro ataca a próxima carta de vida do jogador
